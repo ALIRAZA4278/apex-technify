@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:reactbits.dev)",
+      "Bash(npm install:*)"
+    ]
+  }
+}
