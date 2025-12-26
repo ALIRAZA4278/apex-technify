@@ -175,7 +175,7 @@ export const servicesData = {
     description: "Transform raw footage into compelling visual stories. Our professional video editing services bring your vision to life with stunning effects, smooth transitions, and perfect pacing.",
     heroImage: "/services/video-editing.jpg",
     icon: "video",
-    color: "#f43f5e",
+    color: "#d946ef",
     features: [
       {
         title: "Professional Editing",
@@ -231,7 +231,7 @@ export const servicesData = {
     description: "Data-driven digital marketing strategies that deliver real results. We help you reach your target audience, increase engagement, and drive conversions across all digital channels.",
     heroImage: "/services/digital-marketing.jpg",
     icon: "marketing",
-    color: "#10b981",
+    color: "#06b6d4",
     features: [
       {
         title: "PPC Advertising",
@@ -287,7 +287,7 @@ export const servicesData = {
     description: "Boost your search engine rankings and drive organic traffic. Our comprehensive SEO strategies help your website get discovered by customers actively searching for your services.",
     heroImage: "/services/seo.jpg",
     icon: "search",
-    color: "#f59e0b",
+    color: "#a855f7",
     features: [
       {
         title: "Keyword Research",
@@ -343,7 +343,7 @@ export const servicesData = {
     description: "Strategic social media management that builds your brand, engages your audience, and drives real business results. We handle everything from content creation to community management.",
     heroImage: "/services/social-media.jpg",
     icon: "social",
-    color: "#8b5cf6",
+    color: "#d946ef",
     features: [
       {
         title: "Content Creation",
@@ -399,7 +399,7 @@ export const servicesData = {
     description: "Launch and grow your online store with our comprehensive e-commerce solutions. From Shopify to custom platforms, we build stores that convert visitors into customers.",
     heroImage: "/services/ecommerce.jpg",
     icon: "cart",
-    color: "#ec4899",
+    color: "#06b6d4",
     features: [
       {
         title: "Store Setup",

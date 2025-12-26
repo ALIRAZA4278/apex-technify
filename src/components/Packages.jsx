@@ -454,7 +454,7 @@ const PackageCard = ({ pkg, index, onSelect }) => {
   const tierColors = {
     Basic: { primary: "#06b6d4", secondary: "#0891b2" },
     Standard: { primary: "#d946ef", secondary: "#a855f7" },
-    Premium: { primary: "#f59e0b", secondary: "#d97706" },
+    Premium: { primary: "#a855f7", secondary: "#7c3aed" },
   };
 
   const colors = tierColors[pkg.tier];
