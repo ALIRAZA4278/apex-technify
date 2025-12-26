@@ -1,6 +1,6 @@
 "use client";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useState, useRef } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 
 const stats = [
   { number: "150+", label: "Projects Completed", icon: "🚀" },
@@ -12,34 +12,13 @@ const stats = [
 const About = () => {
   const [hoveredStat, setHoveredStat] = useState(null);
   const [hoveredFeature, setHoveredFeature] = useState(null);
-  const sectionRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const bgY1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const bgY2 = useTransform(scrollYProgress, [0, 1], [-50, 100]);
-  const bgY3 = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
 
   return (
-    <section ref={sectionRef} id="aboutus" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background Elements with Parallax */}
+    <section id="aboutus" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
+      {/* Background Elements - Static for performance */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#d946ef]/5 rounded-full blur-[180px]"
-          style={{ y: bgY1 }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#06b6d4]/5 rounded-full blur-[180px]"
-          style={{ y: bgY2 }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#a855f7]/3 rounded-full blur-[200px]"
-          style={{ y: bgY3 }}
-        />
+        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-[#d946ef]/5 rounded-full blur-[80px]" />
+        <div className="absolute bottom-0 right-1/4 w-[250px] h-[250px] bg-[#06b6d4]/5 rounded-full blur-[80px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
@@ -129,36 +108,11 @@ const About = () => {
                   results.
                 </p>
 
-                <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed mb-6 sm:mb-8">
+                <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed">
                   From stunning websites to comprehensive digital marketing strategies,
                   we help businesses stand out in the digital landscape and achieve
                   their goals with cutting-edge technology and creative excellence.
                 </p>
-
-                {/* CTA Button */}
-                <motion.button
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden text-sm sm:text-base"
-                  style={{
-                    background: "linear-gradient(135deg, #d946ef 0%, #a855f7 100%)",
-                    boxShadow: "0 0 30px rgba(217,70,239,0.3)",
-                  }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(217,70,239,0.5)" }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 flex items-center gap-3 text-white">
-                    Learn More
-                    <motion.svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </motion.svg>
-                  </span>
-                </motion.button>
               </motion.div>
 
               {/* Right Side - Stats Grid */}
@@ -202,12 +156,8 @@ const About = () => {
                     <motion.h3
                       className="text-3xl md:text-4xl font-bold mb-1 relative z-10"
                       style={{
-                        background: hoveredStat === index
-                          ? "linear-gradient(135deg, #d946ef 0%, #06b6d4 100%)"
-                          : "linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
+                        color: hoveredStat === index ? "#d946ef" : "#ffffff",
+                        textShadow: hoveredStat === index ? "0 0 20px rgba(217,70,239,0.5)" : "none",
                       }}
                     >
                       {stat.number}

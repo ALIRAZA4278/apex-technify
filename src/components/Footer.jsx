@@ -1,17 +1,7 @@
 "use client";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { motion } from "motion/react";
 
-const Footer = () => {
-  const footerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: footerRef,
-    offset: ["start end", "end end"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+const Footer = ({ onContactClick }) => {
 
   const socialLinks = [
     {
@@ -56,31 +46,31 @@ const Footer = () => {
     },
   ];
 
-  const navLinks = ["About us", "Portfolio", "Expertise", "Clientele"];
+  const navLinks = [
+    { name: "Services", href: "#expertise" },
+    { name: "Packages", href: "#packages" },
+    { name: "About us", href: "#aboutus" },
+    { name: "Portfolio", href: "#portfolio" },
+  ];
   const locations = ["Dubai", "New York", "London"];
 
   return (
     <footer
-      ref={footerRef}
       className="relative pt-12 sm:pt-16 md:pt-20 pb-6 sm:pb-8 overflow-hidden"
       style={{
         background: "linear-gradient(to bottom, transparent 0%, rgba(217,70,239,0.08) 60%, rgba(217,70,239,0.15) 100%)",
       }}
     >
-      {/* Gradient Glow at Top with Parallax */}
-      <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none"
+      {/* Gradient Glow at Top */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[200px] pointer-events-none"
         style={{
           background: "radial-gradient(ellipse at center top, rgba(217,70,239,0.15) 0%, transparent 70%)",
-          y: useTransform(scrollYProgress, [0, 1], [50, 0]),
         }}
       />
 
       {/* Content */}
-      <motion.div
-        className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10"
-        style={{ y, opacity }}
-      >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         {/* Main Footer Content */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Left Side - Social & Copyright */}
@@ -130,7 +120,7 @@ const Footer = () => {
           <div className="flex flex-col items-center md:items-end gap-3 sm:gap-4">
             {/* Navigation Links */}
             <motion.nav
-              className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-6 md:gap-8"
+              className="flex flex-wrap justify-center md:justify-end items-center gap-4 sm:gap-6 md:gap-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -138,16 +128,27 @@ const Footer = () => {
             >
               {navLinks.map((link, index) => (
                 <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase().replace(" ", "")}`}
+                  key={link.name}
+                  href={link.href}
                   className="text-gray-300 text-xs sm:text-sm hover:text-[#d946ef] transition-colors duration-300 relative group"
                   whileHover={{ y: -2 }}
                 >
-                  {link}
+                  {link.name}
                   <span className="text-[#d946ef]">.</span>
                   <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#d946ef] group-hover:w-full transition-all duration-300" />
                 </motion.a>
               ))}
+              <motion.button
+                onClick={onContactClick}
+                className="px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-white relative overflow-hidden"
+                style={{
+                  background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #06b6d4 100%)",
+                }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(217, 70, 239, 0.5)" }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Contact Us
+              </motion.button>
             </motion.nav>
 
             {/* Locations */}
@@ -164,18 +165,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Divider Line */}
-        <motion.div
+        <div
           className="w-full h-[1px] mb-6"
           style={{
             background: "linear-gradient(90deg, transparent, rgba(217,70,239,0.3), transparent)",
           }}
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.5 }}
         />
 
-      </motion.div>
+      </div>
     </footer>
   );
 };

@@ -1,6 +1,7 @@
 "use client";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useState, useRef } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
+import Link from "next/link";
 
 const themeColor = "#d946ef";
 
@@ -8,6 +9,7 @@ const services = [
   {
     id: 1,
     title: "Web Development",
+    slug: "web-development",
     description: "Custom websites and web applications built with cutting-edge technologies for optimal performance.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
@@ -19,18 +21,22 @@ const services = [
   },
   {
     id: 2,
-    title: "Mobile Apps",
-    description: "Native and cross-platform mobile applications that deliver seamless user experiences.",
+    title: "Logo Design",
+    slug: "logo-design",
+    description: "Creative and memorable logo designs that capture your brand essence and leave lasting impressions.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-        <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-        <line x1="12" y1="18" x2="12" y2="18.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M12 22V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M20 16L12 12L4 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
       </svg>
     ),
   },
   {
     id: 3,
     title: "UI/UX Design",
+    slug: "ui-ux-design",
     description: "Beautiful, intuitive interfaces designed to engage users and enhance brand identity.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
@@ -42,7 +48,23 @@ const services = [
   },
   {
     id: 4,
+    title: "Video Editing",
+    slug: "video-editing",
+    description: "Professional video editing and production services to create stunning visual content for your brand.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+        <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M10 9L15 12L10 15V9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M2 8H22" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="5" cy="6" r="1" fill="currentColor"/>
+        <circle cx="8" cy="6" r="1" fill="currentColor"/>
+      </svg>
+    ),
+  },
+  {
+    id: 5,
     title: "Digital Marketing",
+    slug: "digital-marketing",
     description: "Data-driven marketing strategies to grow your online presence and reach target audiences.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
@@ -53,18 +75,9 @@ const services = [
     ),
   },
   {
-    id: 5,
-    title: "Brand Identity",
-    description: "Comprehensive branding solutions from logo design to complete visual identity systems.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
-  {
     id: 6,
     title: "SEO Optimization",
+    slug: "seo-optimization",
     description: "Strategic SEO services to improve search rankings and drive organic traffic to your site.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
@@ -76,7 +89,24 @@ const services = [
   },
   {
     id: 7,
+    title: "Social Media Management",
+    slug: "social-media",
+    description: "Strategic social media management to build your brand presence and engage your audience.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
+        <circle cx="6" cy="6" r="3" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="18" cy="6" r="3" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="6" cy="18" r="3" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="18" cy="18" r="3" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M8.5 8.5L10 10M14 10L15.5 8.5M8.5 15.5L10 14M14 14L15.5 15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    id: 8,
     title: "E-Commerce",
+    slug: "e-commerce",
     description: "Powerful online stores with secure payments, inventory management, and seamless checkout.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
@@ -86,33 +116,24 @@ const services = [
       </svg>
     ),
   },
-  {
-    id: 8,
-    title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and deployment services for modern applications.",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-        <path d="M18 10H16.74C16.3659 8.55179 15.5928 7.23838 14.5086 6.20794C13.4245 5.17751 12.0727 4.47314 10.6069 4.17428C9.14114 3.87542 7.62082 3.99423 6.21982 4.51714C4.81882 5.04005 3.59366 5.94616 2.68474 7.13091C1.77583 8.31567 1.21918 9.7318 1.07689 11.2166C0.934604 12.7014 1.21227 14.1962 1.87887 15.536C2.54546 16.8758 3.57461 18.0086 4.85017 18.8059C6.12572 19.6033 7.59713 20.0346 9.1 20.05H18C19.3261 20.05 20.5979 19.5232 21.5355 18.5855C22.4732 17.6479 23 16.3761 23 15.05C23 13.7239 22.4732 12.4521 21.5355 11.5145C20.5979 10.5768 19.3261 10.05 18 10.05V10Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    ),
-  },
 ];
 
 const ServiceCard = ({ service, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
-      className="relative group"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <Link href={`/services/${service.slug}`}>
       <motion.div
-        className="relative h-full p-6 md:p-8 rounded-2xl cursor-pointer overflow-hidden"
+        className="relative group"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <motion.div
+          className="relative h-full p-6 md:p-8 rounded-2xl cursor-pointer overflow-hidden"
         style={{
           background: "linear-gradient(145deg, #0d0d12 0%, #0a0a0f 100%)",
           border: `1px solid ${isHovered ? themeColor + "40" : "rgba(255,255,255,0.05)"}`,
@@ -205,31 +226,21 @@ const ServiceCard = ({ service, index }) => {
             />
           </svg>
         </motion.div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </Link>
   );
 };
 
 const ServicesGrid = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-
   return (
-    <section id="expertise" ref={containerRef} className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Parallax background elements */}
-      <motion.div
-        className="absolute top-20 -left-20 w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] bg-[#d946ef]/5 rounded-full blur-[150px] pointer-events-none"
-        style={{ y }}
+    <section id="expertise" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
+      {/* Static background elements - removed parallax for performance */}
+      <div
+        className="absolute top-20 -left-20 w-[250px] sm:w-[300px] h-[250px] sm:h-[300px] bg-[#d946ef]/5 rounded-full blur-[80px] pointer-events-none"
       />
-      <motion.div
-        className="absolute bottom-20 -right-20 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-[#06b6d4]/5 rounded-full blur-[150px] pointer-events-none"
-        style={{ y: useTransform(scrollYProgress, [0, 1], [-50, 50]) }}
+      <div
+        className="absolute bottom-20 -right-20 w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] bg-[#06b6d4]/5 rounded-full blur-[80px] pointer-events-none"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
@@ -289,6 +300,12 @@ const ServicesGrid = () => {
           transition={{ delay: 0.5 }}
         >
           <motion.button
+            onClick={() => {
+              const packagesSection = document.getElementById('packages');
+              if (packagesSection) {
+                packagesSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
             className="px-8 py-4 rounded-full font-medium text-white relative overflow-hidden group"
             style={{
               background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #06b6d4 100%)",

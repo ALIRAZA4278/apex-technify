@@ -10,6 +10,8 @@ import Portfolio from "@/components/Portfolio";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import TrueFocus from "@/components/TrueFocus";
+import Packages from "@/components/Packages";
+import ContactModal from "@/components/ContactModal";
 
 const Page = () => {
   // Icon hover states
@@ -17,21 +19,42 @@ const Page = () => {
   const [hoverVR, setHoverVR] = useState(false);
   const [hoverStone, setHoverStone] = useState(false);
 
+  // Contact modal state
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [selectedPackage, setSelectedPackage] = useState(null);
+
+  const handlePackageSelect = (packageInfo) => {
+    setSelectedPackage(packageInfo);
+    setIsContactOpen(true);
+  };
+
+  const handleContactOpen = () => {
+    setSelectedPackage(null);
+    setIsContactOpen(true);
+  };
+
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
     });
 
+    let rafId;
     function raf(time) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
   }, []);
 
   // Animation variants
@@ -68,19 +91,18 @@ const Page = () => {
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
       {/* Particles Background */}
       <Particles
-        particleCount={80}
-        speed={0.3}
+        particleCount={40}
+        speed={0.2}
         particleColors={["#d946ef", "#a855f7", "#06b6d4", "#8b5cf6"]}
-        moveParticlesOnHover={true}
-        particleHoverFactor={2}
+        moveParticlesOnHover={false}
         alphaParticles={true}
-        sizeRandomness={2}
+        sizeRandomness={1}
       />
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#d946ef]/5 rounded-full blur-[200px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#06b6d4]/5 rounded-full blur-[200px]" />
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#d946ef]/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-[#06b6d4]/5 rounded-full blur-[100px]" />
       </div>
 
       {/* Main Content */}
@@ -120,6 +142,7 @@ const Page = () => {
             {/* CTA Button */}
             <motion.div variants={fadeUpVariants} className="mt-6 sm:mt-8">
               <motion.button
+                onClick={handleContactOpen}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(217, 70, 239, 0.5)" }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#d946ef] to-[#06b6d4] rounded-full text-white font-medium text-sm sm:text-base md:text-lg transition-all duration-300"
@@ -148,11 +171,15 @@ const Page = () => {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {["About us", "Portfolio", "Expertise", "Clientele"].map(
-              (item, index) => (
+            {[
+                  { name: "Services", href: "#expertise" },
+                  { name: "Packages", href: "#packages" },
+                  { name: "About us", href: "#aboutus" },
+                  { name: "Portfolio", href: "#portfolio" },
+                ].map((item, index) => (
                 <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "")}`}
+                  key={item.name}
+                  href={item.href}
                   variants={fadeRightVariants}
                   whileHover={{
                     x: -15,
@@ -162,7 +189,7 @@ const Page = () => {
                     index === 0 ? "text-white font-medium" : "text-gray-600 hover:text-white"
                   }`}
                 >
-                  {item}.
+                  {item.name}.
                   <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#d946ef] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.a>
               )
@@ -476,6 +503,9 @@ const Page = () => {
         {/* Services Grid Section */}
         <ServicesGrid />
 
+        {/* Packages Section */}
+        <Packages onPackageSelect={handlePackageSelect} />
+
         {/* About Section */}
         <About />
 
@@ -483,8 +513,15 @@ const Page = () => {
         <Portfolio />
 
         {/* Footer */}
-        <Footer />
+        <Footer onContactClick={handleContactOpen} />
       </main>
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+        selectedPackage={selectedPackage}
+      />
     </div>
   );
 };

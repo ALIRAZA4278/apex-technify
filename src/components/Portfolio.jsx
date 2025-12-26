@@ -1,65 +1,125 @@
 "use client";
-import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
-import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { useState } from "react";
 
 const projects = [
+  // Web Development
   {
     id: 1,
-    title: "Nexus Finance",
-    category: "Web App",
-    description: "Modern fintech dashboard with real-time analytics",
+    title: "Nexus Finance Dashboard",
+    category: "Web Development",
+    description: "Modern fintech dashboard with real-time analytics and data visualization",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tags: ["React", "Node.js", "D3.js"],
-    size: "large",
+    tags: ["React", "Node.js", "MongoDB"],
   },
   {
     id: 2,
-    title: "Vortex Gaming",
-    category: "Mobile App",
-    description: "Immersive mobile gaming platform",
-    image: "https://images.unsplash.com/photo-1552820728-8b83bb6b2b0d?w=800&q=80",
-    tags: ["React Native", "Firebase"],
-    size: "small",
+    title: "RestroHub Restaurant Platform",
+    category: "Web Development",
+    description: "Full-stack restaurant management and ordering system",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
+    tags: ["Next.js", "PostgreSQL", "Stripe"],
   },
+  // Logo Design
   {
     id: 3,
-    title: "Pulse Health",
-    category: "UI/UX",
-    description: "Healthcare app redesign with accessibility focus",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-    tags: ["Figma", "Prototyping"],
-    size: "small",
+    title: "TechVault Brand Identity",
+    category: "Logo Design",
+    description: "Modern minimalist logo design for a tech startup",
+    image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=800&q=80",
+    tags: ["Logo", "Branding", "Identity"],
   },
   {
     id: 4,
-    title: "Echo Commerce",
-    category: "E-Commerce",
-    description: "Luxury fashion e-commerce experience",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
-    tags: ["Next.js", "Stripe", "Sanity"],
-    size: "small",
+    title: "GreenLeaf Organic Logo",
+    category: "Logo Design",
+    description: "Eco-friendly brand logo with natural elements",
+    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
+    tags: ["Logo", "Organic", "Minimal"],
   },
+  // UI/UX Design
   {
     id: 5,
-    title: "Aurora Analytics",
-    category: "Web App",
-    description: "AI-powered business intelligence platform",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    tags: ["Python", "TensorFlow", "React"],
-    size: "large",
+    title: "HealthPlus App Design",
+    category: "UI/UX Design",
+    description: "Healthcare app redesign with accessibility focus",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    tags: ["Figma", "Mobile UI", "Prototype"],
   },
   {
     id: 6,
-    title: "Stellar Brand",
-    category: "Branding",
-    description: "Complete brand identity for tech startup",
-    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
-    tags: ["Branding", "Logo Design"],
-    size: "small",
+    title: "EduLearn Dashboard",
+    category: "UI/UX Design",
+    description: "E-learning platform with intuitive student dashboard",
+    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80",
+    tags: ["UX Research", "Wireframes", "Design System"],
+  },
+  // Video Editing
+  {
+    id: 7,
+    title: "Brand Story Documentary",
+    category: "Video Editing",
+    description: "Corporate documentary with cinematic color grading",
+    image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80",
+    tags: ["Premiere Pro", "Color Grading", "Motion Graphics"],
+  },
+  {
+    id: 8,
+    title: "Product Launch Video",
+    category: "Video Editing",
+    description: "Dynamic product reveal with visual effects",
+    image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80",
+    tags: ["After Effects", "VFX", "Sound Design"],
+  },
+  // Digital Marketing
+  {
+    id: 9,
+    title: "FitLife Campaign",
+    category: "Digital Marketing",
+    description: "360° digital marketing campaign for fitness brand",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    tags: ["Google Ads", "Meta Ads", "Analytics"],
+  },
+  // SEO Optimization
+  {
+    id: 10,
+    title: "LegalEase SEO Strategy",
+    category: "SEO Optimization",
+    description: "Complete SEO overhaul resulting in 300% traffic increase",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80",
+    tags: ["Technical SEO", "Content Strategy", "Link Building"],
+  },
+  // Social Media Management
+  {
+    id: 11,
+    title: "StyleBox Social Growth",
+    category: "Social Media Management",
+    description: "Instagram growth from 5K to 100K followers in 6 months",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80",
+    tags: ["Instagram", "Content Creation", "Influencer"],
+  },
+  // E-Commerce
+  {
+    id: 12,
+    title: "LuxeWear Fashion Store",
+    category: "E-Commerce",
+    description: "Premium fashion e-commerce with AR try-on feature",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+    tags: ["Shopify", "Custom Theme", "Payment Integration"],
   },
 ];
 
-const categories = ["All", "Web App", "Mobile App", "UI/UX", "E-Commerce", "Branding"];
+const categories = [
+  "All",
+  "Web Development",
+  "Logo Design",
+  "UI/UX Design",
+  "Video Editing",
+  "Digital Marketing",
+  "SEO Optimization",
+  "Social Media Management",
+  "E-Commerce",
+];
 
 const PortfolioCard = ({ project, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -214,16 +274,6 @@ const PortfolioCard = ({ project, index }) => {
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState(projects);
-  const sectionRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const headerY = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -235,17 +285,11 @@ const Portfolio = () => {
   };
 
   return (
-    <section ref={sectionRef} id="portfolio" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background Gradients with Parallax */}
+    <section id="portfolio" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
+      {/* Background Gradients - Static for performance */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#d946ef]/5 rounded-full blur-[180px]"
-          style={{ y: backgroundY }}
-        />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#06b6d4]/5 rounded-full blur-[180px]"
-          style={{ y: useTransform(scrollYProgress, [0, 1], [50, -100]) }}
-        />
+        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-[#d946ef]/5 rounded-full blur-[80px]" />
+        <div className="absolute bottom-0 right-1/4 w-[250px] h-[250px] bg-[#06b6d4]/5 rounded-full blur-[80px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
