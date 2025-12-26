@@ -18,10 +18,10 @@ const Footer = ({ onContactClick }) => {
   ];
 
   const navLinks = [
-    { name: "Services", href: "#expertise" },
-    { name: "Packages", href: "#packages" },
     { name: "About us", href: "#aboutus" },
+    { name: "Services", href: "#expertise" },
     { name: "Portfolio", href: "#portfolio" },
+    { name: "Packages", href: "#packages" },
   ];
 
   const locations = ["Dubai", "New York", "London"];

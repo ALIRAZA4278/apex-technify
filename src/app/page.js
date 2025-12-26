@@ -181,10 +181,10 @@ const Page = () => {
             viewport={{ once: true }}
           >
             {[
-                  { name: "Services", href: "#expertise" },
-                  { name: "Packages", href: "#packages" },
                   { name: "About us", href: "#aboutus" },
+                  { name: "Services", href: "#expertise" },
                   { name: "Portfolio", href: "#portfolio" },
+                  { name: "Packages", href: "#packages" },
                 ].map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -510,17 +510,17 @@ const Page = () => {
           </motion.div>
         </div>
 
-        {/* Services Grid Section */}
-        <ServicesGrid />
-
-        {/* Packages Section */}
-        <Packages onPackageSelect={handlePackageSelect} />
-
         {/* About Section */}
         <About />
 
+        {/* Services Grid Section */}
+        <ServicesGrid />
+
         {/* Portfolio Section */}
         <Portfolio />
+
+        {/* Packages Section */}
+        <Packages onPackageSelect={handlePackageSelect} />
 
         {/* Footer */}
         <Footer onContactClick={handleContactOpen} />

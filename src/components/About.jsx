@@ -40,7 +40,7 @@ const features = [
     ),
     title: "24/7 Support",
     description: "Round-the-clock assistance for all your needs",
-    color: "#06b6d4",
+    color: "#a855f7",
   },
 ];
 

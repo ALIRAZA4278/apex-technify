@@ -452,7 +452,7 @@ const PackageCard = ({ pkg, index, onSelect }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const tierColors = {
-    Basic: { primary: "#06b6d4", secondary: "#0891b2" },
+    Basic: { primary: "#a855f7", secondary: "#7c3aed" },
     Standard: { primary: "#d946ef", secondary: "#a855f7" },
     Premium: { primary: "#a855f7", secondary: "#7c3aed" },
   };

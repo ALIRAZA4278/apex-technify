@@ -119,7 +119,7 @@ export const servicesData = {
     description: "We create intuitive, beautiful interfaces that users love. Our human-centered design approach ensures your product is both visually stunning and easy to use.",
     heroImage: "/services/ui-ux.jpg",
     icon: "design",
-    color: "#06b6d4",
+    color: "#a855f7",
     features: [
       {
         title: "User Research",
@@ -231,7 +231,7 @@ export const servicesData = {
     description: "Data-driven digital marketing strategies that deliver real results. We help you reach your target audience, increase engagement, and drive conversions across all digital channels.",
     heroImage: "/services/digital-marketing.jpg",
     icon: "marketing",
-    color: "#06b6d4",
+    color: "#a855f7",
     features: [
       {
         title: "PPC Advertising",
@@ -399,7 +399,7 @@ export const servicesData = {
     description: "Launch and grow your online store with our comprehensive e-commerce solutions. From Shopify to custom platforms, we build stores that convert visitors into customers.",
     heroImage: "/services/ecommerce.jpg",
     icon: "cart",
-    color: "#06b6d4",
+    color: "#a855f7",
     features: [
       {
         title: "Store Setup",

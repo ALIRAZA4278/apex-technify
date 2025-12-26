@@ -2,25 +2,80 @@
 import { useState } from "react";
 
 const projects = [
-  { id: 1, title: "Nexus Finance Dashboard", category: "Web Development", description: "Modern fintech dashboard with real-time analytics", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80", tags: ["React", "Node.js", "MongoDB"] },
-  { id: 2, title: "RestroHub Restaurant Platform", category: "Web Development", description: "Full-stack restaurant management system", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80", tags: ["Next.js", "PostgreSQL", "Stripe"] },
-  { id: 3, title: "TechVault Brand Identity", category: "Logo Design", description: "Modern minimalist logo design for a tech startup", image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=800&q=80", tags: ["Logo", "Branding", "Identity"] },
-  { id: 4, title: "GreenLeaf Organic Logo", category: "Logo Design", description: "Eco-friendly brand logo with natural elements", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80", tags: ["Logo", "Organic", "Minimal"] },
-  { id: 5, title: "HealthPlus App Design", category: "UI/UX Design", description: "Healthcare app redesign with accessibility focus", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80", tags: ["Figma", "Mobile UI", "Prototype"] },
-  { id: 6, title: "EduLearn Dashboard", category: "UI/UX Design", description: "E-learning platform with intuitive student dashboard", image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&q=80", tags: ["UX Research", "Wireframes", "Design System"] },
-  { id: 7, title: "Brand Story Documentary", category: "Video Editing", description: "Corporate documentary with cinematic color grading", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80", tags: ["Premiere Pro", "Color Grading", "Motion Graphics"] },
-  { id: 8, title: "Product Launch Video", category: "Video Editing", description: "Dynamic product reveal with visual effects", image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&q=80", tags: ["After Effects", "VFX", "Sound Design"] },
-  { id: 9, title: "FitLife Campaign", category: "Digital Marketing", description: "360° digital marketing campaign for fitness brand", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", tags: ["Google Ads", "Meta Ads", "Analytics"] },
-  { id: 10, title: "LegalEase SEO Strategy", category: "SEO Optimization", description: "Complete SEO overhaul resulting in 300% traffic increase", image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80", tags: ["Technical SEO", "Content Strategy", "Link Building"] },
-  { id: 11, title: "StyleBox Social Growth", category: "Social Media Management", description: "Instagram growth from 5K to 100K followers", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80", tags: ["Instagram", "Content Creation", "Influencer"] },
-  { id: 12, title: "LuxeWear Fashion Store", category: "E-Commerce", description: "Premium fashion e-commerce with AR try-on feature", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80", tags: ["Shopify", "Custom Theme", "Payment Integration"] },
+  {
+    id: 1,
+    title: "Health Mate",
+    category: "Web Development",
+    description: "AI-powered health report analyzer that provides detailed insights and recommendations from medical reports",
+    image: "/website/healthmate.png",
+    tags: ["Next.js", "AI Integration", "Healthcare"],
+  },
+  {
+    id: 2,
+    title: "Halwaiii",
+    category: "E-Commerce",
+    description: "Premium Pakistani sweets e-commerce platform blending heritage craftsmanship with modern shopping experience",
+    image: "/website/halwaiii.png",
+    tags: ["E-Commerce", "React", "Payment Integration"],
+  },
+  {
+    id: 3,
+    title: "GracePoint Medical",
+    category: "Web Development",
+    description: "Healthcare staffing agency platform connecting medical professionals with facilities worldwide",
+    image: "/website/gracepoint.png",
+    tags: ["Next.js", "Healthcare", "Staffing"],
+  },
+  {
+    id: 4,
+    title: "NDIS Beauty Collective",
+    category: "Web Development",
+    description: "Mobile beauty services platform specializing in accessible, sensory-friendly experiences for clients with disabilities",
+    image: "/website/ndis.png",
+    tags: ["React", "Accessibility", "Booking System"],
+  },
+  {
+    id: 5,
+    title: "Quality Care Senior Living",
+    category: "Web Development",
+    description: "Elegant senior care home website featuring warm aesthetics and comprehensive service showcase",
+    image: "/website/QualityCare.png",
+    tags: ["Next.js", "UI/UX", "Healthcare"],
+  },
+  {
+    id: 6,
+    title: "Workoura",
+    category: "Web Development",
+    description: "Modern job board platform connecting job seekers with verified employers across the globe",
+    image: "/website/workoura.png",
+    tags: ["Next.js", "Job Portal", "Full-Stack"],
+  },
+  {
+    id: 7,
+    title: "Mohit Computers",
+    category: "E-Commerce",
+    description: "Complete computer hardware and electronics e-commerce store with extensive product catalog",
+    image: "/website/mohitcomputers.png",
+    tags: ["Next.js", "E-Commerce", "Full-Stack"],
+  },
+  {
+    id: 8,
+    title: "Furniro",
+    category: "E-Commerce",
+    description: "Modern furniture e-commerce platform with elegant design and seamless shopping experience",
+    image: "/website/furniture.png",
+    tags: ["Next.js", "E-Commerce", "Furniture"],
+  },
 ];
 
-const categories = ["All", "Web Development", "Logo Design", "UI/UX Design", "Video Editing", "Digital Marketing", "SEO Optimization", "Social Media Management", "E-Commerce"];
+const categories = ["All", "Web Development", "E-Commerce"];
 
-const PortfolioCard = ({ project }) => {
+const PortfolioCard = ({ project, onClick }) => {
   return (
-    <div className="group relative overflow-hidden rounded-2xl cursor-pointer h-[280px] md:h-[320px]">
+    <div
+      onClick={onClick}
+      className="group relative overflow-hidden rounded-2xl cursor-pointer h-[320px] md:h-[380px]"
+    >
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
@@ -28,7 +83,7 @@ const PortfolioCard = ({ project }) => {
       />
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 group-hover:from-black/90 transition-all duration-300" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 transition-all duration-300" />
 
       {/* Border */}
       <div className="absolute inset-0 rounded-2xl border border-white/10 group-hover:border-[#d946ef]/50 transition-all duration-300" />
@@ -48,26 +103,28 @@ const PortfolioCard = ({ project }) => {
             {project.category}
           </span>
 
-          {/* Arrow Button */}
+          {/* Zoom Button - Only on Hover */}
           <div
             className="w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-300"
             style={{ background: "rgba(217,70,239,0.9)" }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-white">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2" />
+              <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              <path d="M11 8v6M8 11h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </div>
         </div>
 
-        {/* Bottom Content */}
+        {/* Bottom Content - Always Visible */}
         <div>
           <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
             {project.title}<span className="text-[#d946ef]">.</span>
           </h3>
-          <p className="text-gray-300 text-sm mb-3 line-clamp-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+          <p className="text-gray-300 text-sm mb-3 line-clamp-2">
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75">
+          <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, i) => (
               <span key={i} className="px-2.5 py-1 text-xs rounded-md bg-white/10 text-gray-300">
                 {tag}
@@ -88,6 +145,7 @@ const PortfolioCard = ({ project }) => {
 
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const filteredProjects = activeCategory === "All"
     ? projects
@@ -111,8 +169,8 @@ const Portfolio = () => {
             Our{" "}
             <span className="bg-gradient-to-r from-[#d946ef] to-[#06b6d4] bg-clip-text text-transparent">
               Creative
-            </span>{" "}
             Work
+            </span>{" "}
           </h2>
           <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto px-4">
             Showcasing our finest projects that define innovation and excellence
@@ -147,27 +205,81 @@ const Portfolio = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {filteredProjects.map((project) => (
-            <PortfolioCard key={project.id} project={project} />
+            <PortfolioCard
+              key={project.id}
+              project={project}
+              onClick={() => setSelectedImage(project)}
+            />
           ))}
         </div>
+      </div>
 
-        {/* View All Button */}
-        <div className="flex justify-center mt-10 sm:mt-14 md:mt-20">
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          {/* Close Button */}
           <button
-            className="group relative px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium overflow-hidden text-sm sm:text-base text-white hover:scale-105 active:scale-95 transition-transform duration-200"
-            style={{
-              background: "linear-gradient(135deg, #d946ef 0%, #a855f7 100%)",
-            }}
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
           >
-            <span className="relative z-10 flex items-center gap-3">
-              View All Projects
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Image Container */}
+          <div
+            className="relative max-w-5xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.image}
+              alt={selectedImage.title}
+              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+            />
+
+            {/* Title */}
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
+              <h3 className="text-xl sm:text-2xl font-bold text-white text-center">
+                {selectedImage.title}
+                <span className="text-[#d946ef]">.</span>
+              </h3>
+            </div>
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIndex = filteredProjects.findIndex(p => p.id === selectedImage.id);
+              const prevIndex = currentIndex === 0 ? filteredProjects.length - 1 : currentIndex - 1;
+              setSelectedImage(filteredProjects[prevIndex]);
+            }}
+            className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#d946ef]/80 flex items-center justify-center transition-colors"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIndex = filteredProjects.findIndex(p => p.id === selectedImage.id);
+              const nextIndex = currentIndex === filteredProjects.length - 1 ? 0 : currentIndex + 1;
+              setSelectedImage(filteredProjects[nextIndex]);
+            }}
+            className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#d946ef]/80 flex items-center justify-center transition-colors"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </button>
         </div>
-      </div>
+      )}
     </section>
   );
 };
