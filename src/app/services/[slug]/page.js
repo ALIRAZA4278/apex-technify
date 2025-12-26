@@ -59,6 +59,17 @@ const ServicePage = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Consultation booking state
+  const [consultationForm, setConsultationForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    preferredTime: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
   useEffect(() => {
     const serviceData = getServiceBySlug(params.slug);
     if (serviceData) {
@@ -112,13 +123,52 @@ const ServicePage = () => {
   };
 
   const handleMeetingRequest = () => {
-    if (!service) return;
-    setSelectedPackage({
-      service: service.title,
-      tier: "Meeting",
-      price: "Free",
-    });
-    setIsContactOpen(true);
+    const consultationSection = document.getElementById("consultation");
+    if (consultationSection) {
+      consultationSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Handle consultation form submit
+  const handleConsultationSubmit = async (e) => {
+    e.preventDefault();
+    if (!consultationForm.name || !consultationForm.email || !consultationForm.phone) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/consultation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: consultationForm.name,
+          email: consultationForm.email,
+          phone: consultationForm.phone,
+          service: service?.title,
+          preferredTime: consultationForm.preferredTime,
+          message: consultationForm.message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setConsultationForm({ name: "", email: "", phone: "", preferredTime: "", message: "" });
+        setTimeout(() => setSubmitSuccess(false), 5000);
+      } else {
+        const data = await response.json();
+        alert(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isLoading) {
@@ -331,41 +381,186 @@ const ServicePage = () => {
         </div>
       </section>
 
-      {/* Quick Meeting CTA */}
-      <section className="py-16 sm:py-24">
+      {/* Free Consultation Section */}
+      <section id="consultation" className="py-16 sm:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-16">
           <motion.div
-            className="relative rounded-3xl overflow-hidden p-8 sm:p-12 text-center"
+            className="relative rounded-3xl overflow-hidden"
             style={{
-              background: `linear-gradient(135deg, ${service.color}15 0%, transparent 50%, #06b6d410 100%)`,
-              border: `1px solid ${service.color}30`,
+              background: "linear-gradient(160deg, #0d0d12 0%, #08080c 100%)",
+              border: `1px solid ${service.color}20`,
             }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-              Let's Discuss Your Project
-            </h2>
-            <p className="text-gray-400 max-w-xl mx-auto mb-8">
-              Book a free 30-minute consultation to discuss your {service.title.toLowerCase()} needs.
-              We'll analyze your requirements and provide a custom solution.
-            </p>
-            <motion.button
-              onClick={handleMeetingRequest}
-              className="px-8 py-4 rounded-full font-medium text-white inline-flex items-center gap-2"
-              style={{ background: `linear-gradient(135deg, ${service.color}, #06b6d4)` }}
-              whileHover={{ scale: 1.05, boxShadow: `0 0 40px ${service.color}40` }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8" y1="2" x2="8" y2="6" />
-                <line x1="3" y1="10" x2="21" y2="10" />
-              </svg>
-              Schedule Free Meeting
-            </motion.button>
+            {/* Background Glow */}
+            <div
+              className="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none"
+              style={{ background: `radial-gradient(circle at 80% 20%, ${service.color}40 0%, transparent 60%)` }}
+            />
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 sm:p-12">
+              {/* Left - Info */}
+              <div>
+                <span
+                  className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-4"
+                  style={{ background: `${service.color}20`, color: service.color }}
+                >
+                  Free Consultation
+                </span>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+                  Let's Bring Your <span style={{ color: service.color }}>Vision</span> to Life
+                </h2>
+                <p className="text-gray-400 mb-6">
+                  Schedule a free 30-minute strategy call with our {service.title.toLowerCase()} experts.
+                  We'll discuss your project goals and create a roadmap for success.
+                </p>
+
+                {/* Benefits */}
+                <div className="space-y-3 mb-6">
+                  {[
+                    "Personalized project analysis",
+                    "Expert recommendations",
+                    "Clear pricing & timeline",
+                    "No obligation to proceed"
+                  ].map((benefit, i) => (
+                    <div key={i} className="flex items-center gap-3">
+                      <div
+                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ background: `${service.color}20` }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={service.color} strokeWidth="3">
+                          <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                      <span className="text-gray-300 text-sm">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Info badges */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-gray-400 text-sm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={service.color} strokeWidth="2">
+                      <circle cx="12" cy="12" r="10"/>
+                      <path d="M12 6v6l4 2"/>
+                    </svg>
+                    30 min call
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-400 text-sm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={service.color} strokeWidth="2">
+                      <polygon points="23 7 16 12 23 17 23 7"/>
+                      <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                    </svg>
+                    Video Call
+                  </div>
+                </div>
+              </div>
+
+              {/* Right - Form */}
+              <div
+                className="p-6 rounded-2xl"
+                style={{
+                  background: "linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.2) 100%)",
+                  border: "1px solid rgba(255,255,255,0.05)"
+                }}
+              >
+                {/* Success Message */}
+                {submitSuccess && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mb-4 p-3 rounded-xl text-center"
+                    style={{ background: "rgba(16, 185, 129, 0.1)", border: "1px solid rgba(16, 185, 129, 0.3)" }}
+                  >
+                    <p className="text-green-400 text-sm font-medium">Booked! Check your email for confirmation.</p>
+                  </motion.div>
+                )}
+
+                <form onSubmit={handleConsultationSubmit} className="space-y-4">
+                  <div>
+                    <label className="text-gray-400 text-xs mb-1 block">Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      value={consultationForm.name}
+                      onChange={(e) => setConsultationForm({ ...consultationForm, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#d946ef]/50 transition-colors"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-xs mb-1 block">Email Address *</label>
+                    <input
+                      type="email"
+                      required
+                      value={consultationForm.email}
+                      onChange={(e) => setConsultationForm({ ...consultationForm, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#d946ef]/50 transition-colors"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-xs mb-1 block">Phone Number *</label>
+                    <input
+                      type="tel"
+                      required
+                      value={consultationForm.phone}
+                      onChange={(e) => setConsultationForm({ ...consultationForm, phone: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#d946ef]/50 transition-colors"
+                      placeholder="+1 234 567 8900"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-xs mb-1 block">Preferred Time & Timezone</label>
+                    <input
+                      type="text"
+                      value={consultationForm.preferredTime}
+                      onChange={(e) => setConsultationForm({ ...consultationForm, preferredTime: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#d946ef]/50 transition-colors"
+                      placeholder="e.g., Mon-Fri 10AM-2PM (EST)"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-gray-400 text-xs mb-1 block">Project Details (Optional)</label>
+                    <textarea
+                      rows="3"
+                      value={consultationForm.message}
+                      onChange={(e) => setConsultationForm({ ...consultationForm, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-[#d946ef]/50 transition-colors resize-none"
+                      placeholder="Tell us about your project..."
+                    />
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl font-medium text-white flex items-center justify-center gap-3 disabled:opacity-50"
+                    style={{ background: `linear-gradient(135deg, ${service.color}, #06b6d4)` }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"/>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                        </svg>
+                        Booking...
+                      </>
+                    ) : (
+                      <>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        Book Free Consultation
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
