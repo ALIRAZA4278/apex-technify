@@ -33,26 +33,36 @@ const Page = () => {
     setIsContactOpen(true);
   };
 
+  // Smooth scroll to section
+  const scrollToSection = (e, href) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   // Initialize Lenis smooth scroll
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+      wheelMultiplier: 0.8,
+      touchMultiplier: 1.5,
       infinite: false,
+      gestureOrientation: "vertical",
     });
 
-    let rafId;
     function raf(time) {
       lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
+      requestAnimationFrame(raf);
     }
-    rafId = requestAnimationFrame(raf);
+    requestAnimationFrame(raf);
 
     return () => {
-      cancelAnimationFrame(rafId);
       lenis.destroy();
     };
   }, []);
@@ -91,18 +101,17 @@ const Page = () => {
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
       {/* Particles Background */}
       <Particles
-        particleCount={40}
-        speed={0.2}
-        particleColors={["#d946ef", "#a855f7", "#06b6d4", "#8b5cf6"]}
-        moveParticlesOnHover={false}
+        particleCount={20}
+        speed={0.05}
+        particleColors={["#d946ef", "#a855f7", "#06b6d4"]}
         alphaParticles={true}
-        sizeRandomness={1}
+        sizeRandomness={1.5}
       />
 
-      {/* Gradient overlay */}
+      {/* Gradient overlay - simplified */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#d946ef]/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-[#06b6d4]/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[300px] h-[300px] bg-[#d946ef]/5 rounded-full blur-[60px]" />
+        <div className="absolute bottom-0 right-1/4 w-[250px] h-[250px] bg-[#06b6d4]/5 rounded-full blur-[60px]" />
       </div>
 
       {/* Main Content */}
@@ -180,6 +189,7 @@ const Page = () => {
                 <motion.a
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => scrollToSection(e, item.href)}
                   variants={fadeRightVariants}
                   whileHover={{
                     x: -15,

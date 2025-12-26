@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "motion/react";
-import { useState } from "react";
 import Link from "next/link";
 
 const themeColor = "#d946ef";
@@ -118,73 +116,35 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ service, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const ServiceCard = ({ service }) => {
   return (
     <Link href={`/services/${service.slug}`}>
-      <motion.div
-        className="relative group"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <motion.div
-          className="relative h-full p-6 md:p-8 rounded-2xl cursor-pointer overflow-hidden"
+      <div
+        className="relative group h-full p-6 md:p-8 rounded-2xl cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:border-[#d946ef40]"
         style={{
           background: "linear-gradient(145deg, #0d0d12 0%, #0a0a0f 100%)",
-          border: `1px solid ${isHovered ? themeColor + "40" : "rgba(255,255,255,0.05)"}`,
+          border: "1px solid rgba(255,255,255,0.05)",
         }}
-        whileHover={{ y: -8, scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         {/* Background glow on hover */}
-        <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{
-            background: `radial-gradient(circle at 50% 0%, ${themeColor}20 0%, transparent 70%)`,
-          }}
-        />
-
-        {/* Corner accent */}
         <div
-          className="absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           style={{
-            background: `linear-gradient(135deg, transparent 50%, ${themeColor}15 100%)`,
+            background: `radial-gradient(circle at 50% 0%, ${themeColor}15 0%, transparent 70%)`,
           }}
         />
 
         {/* Icon */}
-        <motion.div
-          className="relative w-12 h-12 md:w-14 md:h-14 mb-5"
-          style={{ color: isHovered ? themeColor : "#6b7280" }}
-          animate={{
-            scale: isHovered ? 1.1 : 1,
-            rotate: isHovered ? 5 : 0,
-          }}
-          transition={{ type: "spring", stiffness: 300 }}
+        <div
+          className="relative w-12 h-12 md:w-14 md:h-14 mb-5 text-gray-500 group-hover:text-[#d946ef] transition-colors duration-300"
         >
           {service.icon}
-          {/* Icon glow */}
-          <motion.div
-            className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-300"
-            style={{ backgroundColor: themeColor }}
-          />
-        </motion.div>
+        </div>
 
         {/* Title */}
         <h3 className="text-lg md:text-xl font-semibold text-white mb-3 tracking-tight">
           {service.title}
-          <motion.span
-            className="inline-block ml-1"
-            style={{ color: themeColor }}
-            animate={{ opacity: isHovered ? 1 : 0.5 }}
-          >
-            .
-          </motion.span>
+          <span className="text-[#d946ef] opacity-50 group-hover:opacity-100 transition-opacity duration-300">.</span>
         </h3>
 
         {/* Description */}
@@ -193,41 +153,20 @@ const ServiceCard = ({ service, index }) => {
         </p>
 
         {/* Bottom line accent */}
-        <motion.div
-          className="absolute bottom-0 left-0 h-[2px]"
+        <div
+          className="absolute bottom-0 left-0 h-[2px] w-0 group-hover:w-full transition-all duration-300"
           style={{
             background: `linear-gradient(90deg, ${themeColor}, transparent)`,
           }}
-          initial={{ width: "0%" }}
-          animate={{ width: isHovered ? "100%" : "0%" }}
-          transition={{ duration: 0.3 }}
         />
 
         {/* Arrow icon */}
-        <motion.div
-          className="absolute bottom-6 right-6 md:bottom-8 md:right-8"
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
-          transition={{ duration: 0.2 }}
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            style={{ color: themeColor }}
-          >
-            <path
-              d="M7 17L17 7M17 7H7M17 7V17"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+        <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style={{ color: themeColor }}>
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-        </motion.div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </Link>
   );
 };
@@ -235,90 +174,52 @@ const ServiceCard = ({ service, index }) => {
 const ServicesGrid = () => {
   return (
     <section id="expertise" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Static background elements - removed parallax for performance */}
-      <div
-        className="absolute top-20 -left-20 w-[250px] sm:w-[300px] h-[250px] sm:h-[300px] bg-[#d946ef]/5 rounded-full blur-[80px] pointer-events-none"
-      />
-      <div
-        className="absolute bottom-20 -right-20 w-[200px] sm:w-[250px] h-[200px] sm:h-[250px] bg-[#06b6d4]/5 rounded-full blur-[80px] pointer-events-none"
-      />
+      {/* Static background elements */}
+      <div className="absolute top-20 -left-20 w-[200px] h-[200px] bg-[#d946ef]/5 rounded-full blur-[50px] pointer-events-none" />
+      <div className="absolute bottom-20 -right-20 w-[150px] h-[150px] bg-[#06b6d4]/5 rounded-full blur-[50px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-16 relative z-10">
         {/* Section Header */}
-        <motion.div
-          className="text-center mb-10 sm:mb-14 md:mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.span
-            className="text-[#d946ef] text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase font-medium"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
+        <div className="text-center mb-10 sm:mb-14 md:mb-20">
+          <span className="text-[#d946ef] text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase font-medium">
             What We Offer
-          </motion.span>
-          <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 sm:mt-4 mb-4 sm:mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 sm:mt-4 mb-4 sm:mb-6">
             Our{" "}
             <span className="bg-gradient-to-r from-[#d946ef] via-[#a855f7] to-[#06b6d4] bg-clip-text text-transparent">
               Services
             </span>
-          </motion.h2>
-          <motion.p
-            className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4">
             We provide comprehensive digital solutions to help your business thrive in the modern landscape.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
+          {services.map((service) => (
+            <ServiceCard key={service.id} service={service} />
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <motion.div
-          className="text-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-        >
-          <motion.button
+        <div className="text-center mt-16">
+          <button
             onClick={() => {
               const packagesSection = document.getElementById('packages');
               if (packagesSection) {
                 packagesSection.scrollIntoView({ behavior: 'smooth' });
               }
             }}
-            className="px-8 py-4 rounded-full font-medium text-white relative overflow-hidden group"
+            className="px-8 py-4 rounded-full font-medium text-white relative overflow-hidden group hover:scale-105 active:scale-95 transition-transform duration-200"
             style={{
               background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #06b6d4 100%)",
             }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <span className="relative z-10">Explore All Services</span>
-            <motion.div
-              className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"
-            />
-          </motion.button>
-        </motion.div>
+            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+          </button>
+        </div>
       </div>
     </section>
   );
