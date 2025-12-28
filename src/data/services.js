@@ -3,336 +3,336 @@ export const servicesData = {
     id: 1,
     slug: "web-development",
     title: "Web Development",
-    tagline: "Build Your Digital Presence",
-    description: "We create powerful, scalable, and visually stunning websites that drive results. From simple landing pages to complex web applications, our team delivers exceptional digital experiences.",
+    tagline: "We Create Impressive, Expandable, and Beautiful Websites That Bring Results",
+    description: "At Apex Technify, we are famous for the excellent website design and custom website development services that we provide, which make the businesses more visible online. Our staff constructs outstanding digital experiences from smooth WordPress website development services to intricate custom web applications that are meant to captivate your audience and produce results.",
     heroImage: "/services/web-dev.jpg",
     icon: "code",
     color: "#d946ef",
     features: [
       {
         title: "Custom Web Applications",
-        description: "Tailored solutions built with modern frameworks like React, Next.js, and Node.js to meet your specific business needs.",
+        description: "Modern frameworks, such as React, Next.js, and Node.js, are employed to create solutions that are customized to the exact requirements of the companies that are seeking custom website development services which are scalable.",
         icon: "app"
       },
       {
         title: "Responsive Design",
-        description: "Pixel-perfect designs that look stunning on all devices - desktop, tablet, and mobile.",
+        description: "Website design and development services that are done to perfection will be very eye-catching on desktops, tablets, and mobile devices.",
         icon: "responsive"
       },
       {
         title: "E-Commerce Solutions",
-        description: "Secure online stores with payment integration, inventory management, and seamless checkout experiences.",
+        description: "Incremental secure WordPress website services or custom online stores with payment integration, inventory control, and hassle-free checkout are available.",
         icon: "cart"
       },
       {
         title: "Performance Optimization",
-        description: "Lightning-fast load times with optimized code, caching strategies, and CDN integration.",
+        description: "Fast-reacting websites with optimized code, caching methods, and CDN integration to guarantee that your site is always performing at its strongest.",
         icon: "speed"
       },
       {
         title: "CMS Integration",
-        description: "Easy content management with WordPress, Strapi, or custom headless CMS solutions.",
+        description: "Unobtrusive WordPress website design services and custom headless CMS solutions that make the management of content easy.",
         icon: "cms"
       },
       {
         title: "API Development",
-        description: "RESTful and GraphQL APIs that power your applications and integrate with third-party services.",
+        description: "Robust RESTful and GraphQL APIs capable of connecting your website with external applications and services.",
         icon: "api"
       }
     ],
     process: [
-      { step: 1, title: "Discovery", description: "We understand your goals, target audience, and project requirements." },
-      { step: 2, title: "Planning", description: "Creating wireframes, user flows, and technical architecture." },
-      { step: 3, title: "Design", description: "Crafting beautiful UI/UX designs that align with your brand." },
-      { step: 4, title: "Development", description: "Building your website with clean, maintainable code." },
-      { step: 5, title: "Testing", description: "Rigorous testing across devices and browsers." },
-      { step: 6, title: "Launch", description: "Deploying your site and providing ongoing support." }
+      { step: 1, title: "Discovery", description: "We dig deep to find out what you want to accomplish, who your target audience is, and what the project requirements are, in order to develop a success roadmap." },
+      { step: 2, title: "Planning", description: "We create wireframes, user flows, and technical architecture. All are designed to make the process more efficient." },
+      { step: 3, title: "Design", description: "You get stunning and personalized UI/UX designs that speak your brand language, attract your site visitors, and increase your sales." },
+      { step: 4, title: "Development", description: "The high-quality, easily maintainable and extensible code forms the basis for your custom website design and development services that are to last." },
+      { step: 5, title: "Testing", description: "Your site gets picked apart and tested by our rigorous cross-device and cross-browser testing to make sure it works perfectly." },
+      { step: 6, title: "Launch", description: "The website is live, and you have support and performance monitoring in place." }
     ],
     technologies: ["React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS", "MongoDB", "PostgreSQL", "AWS"],
     faqs: [
-      { question: "How long does it take to build a website?", answer: "Depending on complexity, a typical website takes 4-8 weeks. Simple sites can be done in 2-3 weeks, while complex applications may take 3-6 months." },
-      { question: "Do you provide hosting?", answer: "Yes, we offer managed hosting solutions with 99.9% uptime guarantee, SSL certificates, and regular backups." },
-      { question: "Can you redesign my existing website?", answer: "Absolutely! We specialize in website redesigns that improve user experience, performance, and conversions." }
+      { question: "What is the duration of a website design process?", answer: "Most websites require 4-8 weeks to get built. Super simple sites will take 2-3 weeks. Complex applications will take 3-6 months." },
+      { question: "Do you rent server space?", answer: "Yes indeed! Our managed hosting solutions come with 99.9% uptime, little extra security in the form of SSL certificates, and regular backups." },
+      { question: "Would you be able to refresh my current website?", answer: "Yes for sure! Our custom website design services along with our WordPress website design services will not only improve the UX and performance but will also increase conversions." }
     ]
   },
   "logo-design": {
     id: 2,
     slug: "logo-design",
     title: "Logo Design",
-    tagline: "Create Your Brand Identity",
-    description: "Your logo is the face of your brand. We design memorable, versatile logos that capture your brand essence and leave lasting impressions on your audience.",
+    tagline: "Professional Logo Creation That Embodies Your Brand",
+    description: "More than just a symbol, your logo is the brand identity cornerstone. We, as a top logo design firm, provide personalized logo designs that narrate your experience, establish reliability, and ensure that your brand is recognized at first sight. No matter if you are setting up a new company or if you operate an established business, our logo design professionals will always come up with imaginative logos that are timeless, flexible, and in line with market competition through proper strategy.",
     heroImage: "/services/logo-design.jpg",
     icon: "palette",
     color: "#a855f7",
     features: [
       {
-        title: "Concept Development",
-        description: "Multiple unique concepts based on your brand values, industry, and target audience.",
+        title: "Custom Logo Design",
+        description: "Logos made to order from the ground up are perfect for expressing your brand's values and audience, as well as for positioning your brand in the industry.",
         icon: "idea"
       },
       {
+        title: "Innovative Logo Ideas",
+        description: "Numerous different logo ideas created by seasoned branding professionals — zero templates, and no taking shortcuts.",
+        icon: "creative"
+      },
+      {
         title: "Versatile Formats",
-        description: "Logo files in all formats (AI, EPS, PNG, SVG, PDF) for print, web, and merchandise.",
+        description: "You will receive your complete logo in the formats that you require (AI, EPS, SVG, PNG, PDF, JPG) for the purposes of web, print, packaging, and merchandise.",
         icon: "files"
       },
       {
-        title: "Brand Guidelines",
-        description: "Comprehensive style guide with color codes, typography, and usage rules.",
+        title: "Brand Rules and Identity",
+        description: "The absolute brand style guide which covers color palettes, typography, logo usage rules, and visual consistency.",
         icon: "guide"
       },
       {
-        title: "Unlimited Revisions",
-        description: "We iterate until you're 100% satisfied with your new logo.",
+        title: "Revisions without Limits",
+        description: "We are going to refine, redesign, and perfect your logo until you are completely satisfied, that is our guarantee.",
         icon: "revision"
       },
       {
-        title: "Trademark Ready",
-        description: "Original designs that can be legally trademarked and protected.",
+        title: "Trademark Ready Designs",
+        description: "Safe to be legally contested and ready for trademark registration are the original and exclusive logo designs that we create.",
         icon: "shield"
-      },
-      {
-        title: "Quick Turnaround",
-        description: "Get initial concepts within 3-5 business days.",
-        icon: "clock"
       }
     ],
     process: [
-      { step: 1, title: "Brand Discovery", description: "Understanding your brand personality, values, and vision." },
-      { step: 2, title: "Research", description: "Analyzing competitors and industry trends." },
-      { step: 3, title: "Sketching", description: "Creating initial hand-drawn concepts." },
-      { step: 4, title: "Digital Design", description: "Refining chosen concepts in digital format." },
-      { step: 5, title: "Refinement", description: "Iterating based on your feedback." },
-      { step: 6, title: "Delivery", description: "Final files and brand guidelines." }
+      { step: 1, title: "Brand Discovery", description: "Discovering your brand's character, mission, audience, and future aspirations." },
+      { step: 2, title: "Market Research", description: "Comparing with competitors, studying trends, and positioning to guarantee the uniqueness of your logo." },
+      { step: 3, title: "Concept Creation", description: "Drawing and maturing numerous creative logo ideas." },
+      { step: 4, title: "Digital Design", description: "Selecting concepts and turning them into polished digital designs." },
+      { step: 5, title: "Refinement", description: "Giving unlimited revisions based on your comments until the highest quality is reached." },
+      { step: 6, title: "Final Delivery", description: "Getting logos among other necessary files, brand guidelines, and complete ownership rights." }
     ],
     technologies: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Procreate"],
     faqs: [
-      { question: "How many logo concepts do I get?", answer: "Our standard package includes 3-5 unique concepts. Premium packages offer more options." },
-      { question: "What if I don't like any concept?", answer: "We offer unlimited revisions and can create entirely new concepts based on your feedback." },
-      { question: "Do I own the logo rights?", answer: "Yes, upon full payment, you receive complete ownership and copyright of your logo." }
+      { question: "How many logo concepts do I get?", answer: "Our standard package includes 3-5 unique concepts. Premium packages offer up to 8 logo ideas with unlimited revisions." },
+      { question: "What if I don't like any concept?", answer: "We offer unlimited revisions and can create entirely new concepts based on your feedback until you are completely satisfied." },
+      { question: "Do I own the logo rights?", answer: "Yes, upon full payment, you receive complete ownership, copyright, and trademark-ready files of your logo." }
     ]
   },
   "ui-ux-design": {
     id: 3,
     slug: "ui-ux-design",
     title: "UI/UX Design",
-    tagline: "Design Experiences That Convert",
-    description: "We create intuitive, beautiful interfaces that users love. Our human-centered design approach ensures your product is both visually stunning and easy to use.",
+    tagline: "UI/UX Design with Happy Customers",
+    description: "The digital experiences we create are user's friendly, attractive, and focused on conversion. The UI/UX design services we provide are rich in user research and then supplemented with beautiful visuals. Being a UI/UX design agency, we apply a human-centered practice to ensure that your product standing easier to operate, attractive, and fulfilling the actual needs of the users which in turn will lead to increased engagement, retention, and conversions.",
     heroImage: "/services/ui-ux.jpg",
     icon: "design",
     color: "#a855f7",
     features: [
       {
-        title: "User Research",
-        description: "In-depth analysis of user behavior, needs, and pain points.",
+        title: "User Experience (UX) Research",
+        description: "Comprehensive user research services involving behavior analysis, interviews, and usability insights for the purpose of revealing actual user's needs and pain points.",
         icon: "research"
       },
       {
-        title: "Wireframing",
-        description: "Low-fidelity mockups to validate structure and user flows.",
+        title: "Wireframing & User Flows",
+        description: "Skillful UX wireframing services for checking the structure, navigation, and interaction before starting the visual design.",
         icon: "wireframe"
       },
       {
-        title: "Prototyping",
-        description: "Interactive prototypes for user testing before development.",
+        title: "Interactive Prototyping",
+        description: "Prototypes of high quality in terms of UI/UX that are interactable and enable testing and collecting feedback from real users prior to development.",
         icon: "prototype"
       },
       {
-        title: "Visual Design",
-        description: "Stunning high-fidelity designs with attention to every detail.",
+        title: "UI Visual Design",
+        description: "Services for modern, clean, and visually striking user interface design which are custom to your brand identity.",
         icon: "visual"
       },
       {
-        title: "Design Systems",
-        description: "Scalable component libraries for consistent user experience.",
+        title: "Design Systems & UI Kits",
+        description: "Development of flexible design systems and component libraries that assure uniformity over various platforms and products.",
         icon: "system"
       },
       {
-        title: "Usability Testing",
-        description: "Real user testing to validate and improve designs.",
+        title: "Usability Testing & UX Optimization",
+        description: "User experience improvement and performance upgrade with the help of data-based usability testing.",
         icon: "testing"
       }
     ],
     process: [
-      { step: 1, title: "Research", description: "User interviews, surveys, and competitor analysis." },
-      { step: 2, title: "Information Architecture", description: "Organizing content and navigation structure." },
-      { step: 3, title: "Wireframes", description: "Creating skeletal layouts and user flows." },
-      { step: 4, title: "Visual Design", description: "Applying brand aesthetics to wireframes." },
-      { step: 5, title: "Prototyping", description: "Building interactive, clickable prototypes." },
-      { step: 6, title: "Handoff", description: "Developer-ready specifications and assets." }
+      { step: 1, title: "Research", description: "This is user interviews, surveys, competitor analysis, and a UX audit." },
+      { step: 2, title: "Information Architecture", description: "Modeling content, navigation, and user journeys for coherence." },
+      { step: 3, title: "Wireframes", description: "Production of low-fidelity layouts and enhanced user flows." },
+      { step: 4, title: "Visual Design", description: "Branding, typography, and UI elements applied." },
+      { step: 5, title: "Prototyping", description: "Creation of interactive prototypes that allow for testing and validation." },
+      { step: 6, title: "Developer Handoff", description: "Design specs, assets, and documentation prepared for development." }
     ],
     technologies: ["Figma", "Adobe XD", "Sketch", "InVision", "Principle", "Framer"],
     faqs: [
-      { question: "What's the difference between UI and UX?", answer: "UX (User Experience) focuses on how the product works and feels, while UI (User Interface) focuses on visual design and aesthetics." },
-      { question: "Do you provide development-ready files?", answer: "Yes, we deliver complete design specifications, assets, and component libraries ready for developers." },
-      { question: "Can you improve my existing product's design?", answer: "Absolutely! We offer UX audits and redesign services to improve existing products." }
+      { question: "What's the difference between UI and UX?", answer: "UX design concentrates chiefly upon the user's requirements and desires regarding usability, functionality, and even enjoyment, whereas UI design deals with the aesthetic and interface parts." },
+      { question: "Will you provide files that are ready for developers?", answer: "Definitely. We hand over the UI/UX files, design systems, and specifications that are ready for the developer." },
+      { question: "Which existing product can be improved?", answer: "Definitely. The UX audits, redesigning services, and optimization for the existing web and mobile products are all offered by us." }
     ]
   },
   "video-editing": {
     id: 4,
     slug: "video-editing",
     title: "Video Editing",
-    tagline: "Tell Your Story Visually",
-    description: "Transform raw footage into compelling visual stories. Our professional video editing services bring your vision to life with stunning effects, smooth transitions, and perfect pacing.",
+    tagline: "Professional Video Editing Services That Captivate",
+    description: "With our professional video editing services, you get to tell your visual stories through high-quality content that is nothing less than engaging, inspiring, and converting. The films produced by our expert video editing service are the ones that the audience will not want to leave from the beginning to the end because of the integration of smooth transitions and storytelling that keeps them hooked. We run our pro video editing agency with love and dedication to work for brands, creators and businesses.",
     heroImage: "/services/video-editing.jpg",
     icon: "video",
     color: "#d946ef",
     features: [
       {
-        title: "Professional Editing",
-        description: "Expert cutting, pacing, and storytelling for maximum impact.",
+        title: "Professional Video Editing",
+        description: "Masters of the craft apply their slicing, timing, and narrative skills to extract the fullest power of the visual and hence keep the audience.",
         icon: "edit"
       },
       {
-        title: "Color Grading",
-        description: "Cinematic color correction to set the perfect mood.",
+        title: "Color Grading & Correction",
+        description: "The application of cinematic color grading that brings out the desired mood, tone, and uniformity with the brand across your videos.",
         icon: "color"
       },
       {
-        title: "Motion Graphics",
-        description: "Animated titles, lower thirds, and visual effects.",
+        title: "Motion Graphics & Visual Effects",
+        description: "Bespoke motion graphics, animated titles, lower thirds, and visual effects that not only add but also showcase the polish and professionalism.",
         icon: "motion"
       },
       {
-        title: "Sound Design",
-        description: "Audio mixing, music selection, and sound effects.",
+        title: "Sound Design & Audio Mixing",
+        description: "Audio was isolated, background music was added, sound effects were put in place, and voice was treated to provide the best view experience.",
         icon: "audio"
       },
       {
-        title: "4K Support",
-        description: "Full support for high-resolution 4K and 8K footage.",
-        icon: "4k"
+        title: "Video Editing for Social Media",
+        description: "Fine-tuned modifications for YouTube, Instagram, TikTok, Facebook, advertisements, and reels — prepared for all platforms.",
+        icon: "social"
       },
       {
-        title: "Fast Turnaround",
-        description: "Quick delivery without compromising quality.",
-        icon: "fast"
+        title: "4K & 8K Video Support",
+        description: "High-resolution 4K and 8K video editing services without quality loss with fast turnaround and reliable delivery timelines.",
+        icon: "4k"
       }
     ],
     process: [
-      { step: 1, title: "Brief", description: "Understanding your vision, style, and objectives." },
-      { step: 2, title: "Review Footage", description: "Analyzing all raw materials and assets." },
-      { step: 3, title: "Rough Cut", description: "Initial assembly with basic structure." },
-      { step: 4, title: "Fine Cut", description: "Refined editing with transitions and effects." },
-      { step: 5, title: "Color & Audio", description: "Color grading and audio mixing." },
-      { step: 6, title: "Final Delivery", description: "Exports in all required formats." }
+      { step: 1, title: "Project Brief", description: "We get a grasp of your goals, audience, style, and platform requirements." },
+      { step: 2, title: "Footage Review", description: "Going through raw footage, assets, and references very carefully." },
+      { step: 3, title: "Rough Cut", description: "The initial edit is made focusing on structure and storytelling." },
+      { step: 4, title: "Fine Cut", description: "The editing with transitions, motion graphics, and effects is done." },
+      { step: 5, title: "Color & Audio", description: "The color grading and audio mixing are done by professionals." },
+      { step: 6, title: "Final Delivery", description: "High-quality exports in all the required formats are done." }
     ],
     technologies: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve", "Final Cut Pro"],
     faqs: [
-      { question: "What formats do you deliver?", answer: "We deliver in any format you need - MP4, MOV, ProRes, and platform-specific formats for YouTube, Instagram, TikTok, etc." },
-      { question: "Can you add subtitles?", answer: "Yes, we offer both burned-in subtitles and separate SRT files for accessibility." },
-      { question: "How long does editing take?", answer: "A typical video takes 3-7 days depending on length and complexity. Rush delivery is available." }
+      { question: "What are the video formats that we could use?", answer: "All main video formats are supplied by us. MP4, MOV, ProRes, and certain formats for YouTube, Instagram, TikTok, Facebook along with ads are included in the list of available formats." },
+      { question: "Will you provide us subtitles and captions?", answer: "Of course, we do. Our subtitles and captions service comes with SRT files along with burnt-in captions too." },
+      { question: "What is the time frame for video editing?", answer: "Most of the projects get completed within 3 to 7 business days, depending on the length and difficulty. Nevertheless, rush delivery can be an option too." }
     ]
   },
   "digital-marketing": {
     id: 5,
     slug: "digital-marketing",
     title: "Digital Marketing",
-    tagline: "Grow Your Online Presence",
-    description: "Data-driven digital marketing strategies that deliver real results. We help you reach your target audience, increase engagement, and drive conversions across all digital channels.",
+    tagline: "Result-Oriented Digital Marketing Services",
+    description: "Digital marketing services based on data that guarantee measurable growth. We use performance-oriented digital marketing strategies that are spread across all major digital channels to help businesses get their messages to target audiences, get attention online, and finally, even get their conversions increased.",
     heroImage: "/services/digital-marketing.jpg",
     icon: "marketing",
     color: "#a855f7",
     features: [
       {
         title: "PPC Advertising",
-        description: "Google Ads and social media campaigns that maximize ROI.",
+        description: "Professional management of high-converting Google ads and social media advertising campaigns with the single goal of bringing maximum ROI, reducing the waste of ad spend, and getting qualified visitors.",
         icon: "ads"
       },
       {
         title: "Content Marketing",
-        description: "Engaging content that attracts and converts your audience.",
+        description: "Tactics aimed at content marketing that enhance brand recognition, increase SEO rankings, and transformed visitors into customers through communication that is both engaging and value-based.",
         icon: "content"
       },
       {
         title: "Email Marketing",
-        description: "Automated campaigns that nurture leads and drive sales.",
+        description: "Email marketing campaigns that are automatic in nature and aimed at lead nurturing, customer retention boosting, and gradual sales growth.",
         icon: "email"
       },
       {
         title: "Analytics & Reporting",
-        description: "Detailed insights and monthly performance reports.",
+        description: "State-of-the-art digital marketing analytics alongside in-depth insights, key performance indicator tracking, and monthly production reports to judge how well campaigns are doing.",
         icon: "analytics"
       },
       {
-        title: "Conversion Optimization",
-        description: "A/B testing and optimization for better results.",
+        title: "Conversion Rate Optimization",
+        description: "All kinds of services related to conversion which are backed up by data and these include A/B testing, optimizing landing pages, etc., all aimed at getting a higher conversion rate.",
         icon: "conversion"
       },
       {
         title: "Marketing Automation",
-        description: "Streamlined workflows that save time and increase efficiency.",
+        description: "Intelligent marketing automation tools that help you out by making the whole process of digital marketing more efficient as they facilitate the workflow and improve the lead-up process.",
         icon: "automation"
       }
     ],
     process: [
-      { step: 1, title: "Audit", description: "Analyzing your current digital presence and competitors." },
-      { step: 2, title: "Strategy", description: "Developing a customized marketing plan." },
-      { step: 3, title: "Implementation", description: "Launching campaigns across channels." },
-      { step: 4, title: "Monitoring", description: "Real-time tracking and optimization." },
-      { step: 5, title: "Reporting", description: "Regular performance reports and insights." },
-      { step: 6, title: "Optimization", description: "Continuous improvement based on data." }
+      { step: 1, title: "Audit", description: "A comprehensive digital marketing audit consisting of your website, campaigns, competitors, and customer behavior." },
+      { step: 2, title: "Strategy", description: "Tailoring a perfect digital marketing strategy to align with the goals of your business and your online audience." },
+      { step: 3, title: "Implementation", description: "Some of the more common elements of marketing involve activities related to paid advertisements, content, email, and social media." },
+      { step: 4, title: "Monitoring", description: "Performance tracking, optimization, and budget management done in real-time." },
+      { step: 5, title: "Reporting", description: "Reporting that is open and includes insights that can be acted upon and metrics that are ROI-focused." },
+      { step: 6, title: "Optimization", description: "Ongoing campaign optimization through analysis, monitoring trends, and understanding user behavior." }
     ],
     technologies: ["Google Ads", "Facebook Ads", "HubSpot", "Mailchimp", "Google Analytics", "SEMrush"],
     faqs: [
-      { question: "How much should I spend on ads?", answer: "We recommend starting with a test budget and scaling based on performance. We'll help you determine the optimal budget for your goals." },
-      { question: "How soon will I see results?", answer: "PPC can show immediate results. SEO and content marketing typically take 3-6 months to show significant impact." },
-      { question: "Do you guarantee results?", answer: "While we can't guarantee specific outcomes, we commit to transparent reporting and continuous optimization for best results." }
+      { question: "What budget is advised for a digital ad to operate perfectly?", answer: "We advise beginning with a trial budget and increasing it based on the results. Our experts in paid advertising will assist you in figuring out the best ad budget to generate the highest ROI." },
+      { question: "How soon will I see results?", answer: "PPC advertising has the ability to attract traffic and produce leads right away, although SEO and content marketing services usually take 3–6 months for eventual results." },
+      { question: "Do you guarantee results?", answer: "We do not assure numerical targets, however, we do give you win-win situation by way of clear reporting, constant improvement and decision making based on data." }
     ]
   },
   "seo-optimization": {
     id: 6,
     slug: "seo-optimization",
     title: "SEO Optimization",
-    tagline: "Rank Higher, Get Found",
-    description: "Boost your search engine rankings and drive organic traffic. Our comprehensive SEO strategies help your website get discovered by customers actively searching for your services.",
+    tagline: "SEO Optimization Services That Drive Organic Growth",
+    description: "With our professional SEO optimization services, you can enhance your ranking in search engine results and bring in visitors with high buying intent. With the help of data-driven, white-hat SEO strategies, we assist businesses in getting found in Google search, bringing in qualified organic visitors, and changing them into customers.",
     heroImage: "/services/seo.jpg",
     icon: "search",
     color: "#a855f7",
     features: [
       {
         title: "Keyword Research",
-        description: "Identifying high-value keywords your customers are searching for.",
+        description: "The very first step involves extensive and complete SEO keyword research to find out the high-value and high-intent search terms that your potential customers are looking for.",
         icon: "keyword"
       },
       {
         title: "On-Page SEO",
-        description: "Optimizing content, meta tags, and site structure.",
+        description: "Total on-page SEO, which consists of content optimization, meta titles, meta descriptions, internal linking, and site structure enhancement.",
         icon: "onpage"
       },
       {
         title: "Technical SEO",
-        description: "Site speed, mobile optimization, and crawlability fixes.",
+        description: "Top-notch technical SEO covering site speed, mobile friendliness, crawlability, schema markup, and indexing.",
         icon: "technical"
       },
       {
         title: "Link Building",
-        description: "Quality backlinks from authoritative websites.",
+        description: "Legitimate link building that brings in high-quality backlinks from major, niche-relevant websites to enhance the domain authority.",
         icon: "link"
       },
       {
         title: "Local SEO",
-        description: "Google Business Profile optimization for local visibility.",
+        description: "Local SEO services precisely tailored to specific locations, including optimization of Google Business Profile, local citations, and targeting of location-based keywords.",
         icon: "local"
       },
       {
         title: "SEO Audits",
-        description: "Comprehensive analysis of your site's SEO health.",
+        description: "Thorough SEO audits that evaluate the performance of the website, indicate problems in ranking, and reveal prospects for growth.",
         icon: "audit"
       }
     ],
     process: [
-      { step: 1, title: "SEO Audit", description: "Complete analysis of your current SEO status." },
-      { step: 2, title: "Keyword Strategy", description: "Research and targeting high-value keywords." },
-      { step: 3, title: "On-Page Optimization", description: "Optimizing content and technical elements." },
-      { step: 4, title: "Content Creation", description: "SEO-optimized content that ranks." },
-      { step: 5, title: "Link Building", description: "Building quality backlinks." },
-      { step: 6, title: "Monitoring", description: "Tracking rankings and organic traffic." }
+      { step: 1, title: "SEO Audit", description: "A complete SEO audit includes technical SEO, on-page factors, backlink analysis, and a study of competitive marketing." },
+      { step: 2, title: "Keyword Strategy", description: "Researching and aligning keywords that are mapped to your business goals and are profitable." },
+      { step: 3, title: "On-Page Optimization", description: "Having every single piece of the site's content, URLs, metadata, internal links, and technical parameters groomed for search engines." },
+      { step: 4, title: "Content Creation", description: "The production of high-quality content, optimized for SEO, with the primary objective of ranking well and engaging users." },
+      { step: 5, title: "Link Building", description: "White-hat backlink building that is performed consistently to enhance the power and position of the site." },
+      { step: 6, title: "Monitoring & Reporting", description: "The process of ranking keywords, organic traffic, and the entire SEO performance being constantly monitored." }
     ],
     technologies: ["Ahrefs", "SEMrush", "Moz", "Google Search Console", "Screaming Frog"],
     faqs: [
-      { question: "How long does SEO take to work?", answer: "SEO is a long-term strategy. You can expect to see initial improvements in 3-4 months, with significant results in 6-12 months." },
-      { question: "Can you guarantee #1 rankings?", answer: "No ethical SEO provider can guarantee specific rankings. We focus on sustainable growth and best practices." },
-      { question: "Do you follow Google guidelines?", answer: "Absolutely. We only use white-hat SEO techniques that comply with search engine guidelines." }
+      { question: "When will we start to see the effects of SEO?", answer: "SEO is a long-term investment. In general, the first signs of improvement are visible after three to four months, while six to twelve months are still required to get very powerful and stable results." },
+      { question: "Are you able to promise us the number one place in Google's search results?", answer: "An unethical SEO agency may guarantee the first position of the search result. Our focus is not on rankings but rather on sustainable growth, competitive keyword targeting, and clearing of best practices." },
+      { question: "Are you in accordance with Google SEO guidelines?", answer: "Absolutely! We are using advanced and sophisticated white-hat SEO techniques which are entirely in accordance with Google search engine's guidelines." }
     ]
   },
   "social-media": {

@@ -8,7 +8,7 @@ const services = [
     id: 1,
     title: "Web Development",
     slug: "web-development",
-    description: "Custom websites and web applications built with cutting-edge technologies for optimal performance.",
+    description: "Impressive, expandable, and beautiful websites from WordPress to custom web applications that captivate your audience and produce results.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
         <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -21,7 +21,7 @@ const services = [
     id: 2,
     title: "Logo Design",
     slug: "logo-design",
-    description: "Creative and memorable logo designs that capture your brand essence and leave lasting impressions.",
+    description: "Professional logo creation that embodies your brand identity with timeless, flexible designs ready for trademark registration.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
         <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -35,7 +35,7 @@ const services = [
     id: 3,
     title: "UI/UX Design",
     slug: "ui-ux-design",
-    description: "Beautiful, intuitive interfaces designed to engage users and enhance brand identity.",
+    description: "User-friendly, attractive digital experiences focused on conversion through research-driven design and beautiful visuals.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
         <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
@@ -48,7 +48,7 @@ const services = [
     id: 4,
     title: "Video Editing",
     slug: "video-editing",
-    description: "Professional video editing and production services to create stunning visual content for your brand.",
+    description: "Professional video editing services that captivate with smooth transitions, stunning effects, and storytelling that keeps audiences hooked.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
         <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.5"/>
@@ -63,7 +63,7 @@ const services = [
     id: 5,
     title: "Digital Marketing",
     slug: "digital-marketing",
-    description: "Data-driven marketing strategies to grow your online presence and reach target audiences.",
+    description: "Data-driven digital marketing services that guarantee measurable growth through PPC advertising, content marketing, and strategic campaigns.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
         <path d="M21 21H4.6C4.03995 21 3.75992 21 3.54601 20.891C3.35785 20.7951 3.20487 20.6422 3.10899 20.454C3 20.2401 3 19.9601 3 19.4V3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
@@ -76,7 +76,7 @@ const services = [
     id: 6,
     title: "SEO Optimization",
     slug: "seo-optimization",
-    description: "Strategic SEO services to improve search rankings and drive organic traffic to your site.",
+    description: "Professional SEO optimization services that enhance your search rankings and bring in visitors with high buying intent through data-driven strategies.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
         <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5"/>

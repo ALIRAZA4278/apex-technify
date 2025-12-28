@@ -137,15 +137,15 @@ const Page = () => {
               variants={fadeUpVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-4 sm:mb-6"
             >
-              Let's break
+              Let's Build Your
               <br />
-              <span className="font-semibold">boundaries together.</span>
+              <span className="font-semibold">Digital Legacy.</span>
             </motion.h2>
             <motion.p
               variants={fadeUpVariants}
               className="text-gray-500 max-w-md text-sm sm:text-base md:text-lg"
             >
-              We craft digital experiences that push the limits of innovation and creativity.
+              Designing meaningful digital experiences that drive real impact.
             </motion.p>
 
             {/* CTA Button */}
@@ -288,7 +288,7 @@ const Page = () => {
             <div className="absolute bottom-6 left-6 w-20 h-20 border-b-2 border-l-2 border-[#06b6d4]/20 rounded-bl-3xl" />
 
             <div className="relative z-10 p-8 md:p-12 lg:p-16">
-              {/* Conception - Step 01 */}
+              {/* Define - Step 01 */}
               <motion.div
                 className="flex flex-col md:flex-row justify-end items-center gap-6 md:gap-10 py-10 md:py-14"
                 initial={{ opacity: 0, x: 40 }}
@@ -309,10 +309,10 @@ const Page = () => {
                   <div className="text-right max-w-[300px] md:max-w-sm">
                     <span className="text-[#d946ef] text-xs tracking-[0.2em] uppercase mb-2 block">Step 01</span>
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight">
-                      Conception<span className="text-[#d946ef]">.</span>
+                      Define<span className="text-[#d946ef]">.</span>
                     </h3>
                     <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-                      Aligning our services with our clients' requirements, we fuse the breath of life into mere ideas and turn them into robust new concepts.
+                      Our approach involves blending raw ideas and specific requirements into a comprehensive strategic vision, transforming mere concepts into solid foundations through concrete, actionable steps.
                     </p>
                   </div>
                   <motion.div
@@ -363,7 +363,7 @@ const Page = () => {
                 <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 rounded-full bg-[#d946ef]" style={{ boxShadow: "0 0 10px #d946ef" }} />
               </motion.div>
 
-              {/* Visualization - Step 02 */}
+              {/* Create - Step 02 */}
               <motion.div
                 className="flex flex-col md:flex-row justify-start items-center gap-6 md:gap-10 py-10 md:py-14"
                 initial={{ opacity: 0, x: -40 }}
@@ -405,10 +405,10 @@ const Page = () => {
                   <div className="text-left max-w-[300px] md:max-w-sm">
                     <span className="text-[#06b6d4] text-xs tracking-[0.2em] uppercase mb-2 block">Step 02</span>
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight">
-                      Visualization<span className="text-[#06b6d4]">.</span>
+                      Create<span className="text-[#06b6d4]">.</span>
                     </h3>
                     <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-                      Your trust with the concepts enables our expert to visualize the emotion and make it more natural for human minds to comprehend.
+                      With your confidence in this foundation, our creative professionals craft your visions into reality, amplifying your brand's unique identity.
                     </p>
                   </div>
                 </div>
@@ -426,7 +426,7 @@ const Page = () => {
                 <div className="absolute left-1/2 -translate-x-1/2 -top-1 w-2 h-2 rounded-full bg-[#06b6d4]" style={{ boxShadow: "0 0 10px #06b6d4" }} />
               </motion.div>
 
-              {/* Completion - Step 03 */}
+              {/* Deliver - Step 03 */}
               <motion.div
                 className="flex flex-col md:flex-row justify-end items-center gap-6 md:gap-10 py-10 md:py-14"
                 initial={{ opacity: 0, x: 40 }}
@@ -447,10 +447,10 @@ const Page = () => {
                   <div className="text-right max-w-[300px] md:max-w-sm">
                     <span className="text-[#a855f7] text-xs tracking-[0.2em] uppercase mb-2 block">Step 03</span>
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight">
-                      Completion<span className="text-[#a855f7]">.</span>
+                      Deliver<span className="text-[#a855f7]">.</span>
                     </h3>
                     <p className="text-gray-400 text-sm md:text-base leading-relaxed">
-                      After the formative process, what once was merely early-on scribbled visions, are now a reality.
+                      From initial concept to comprehensive strategy and creative execution, your vision is actualized into a tangible, high-impact reality.
                     </p>
                   </div>
                   <motion.div

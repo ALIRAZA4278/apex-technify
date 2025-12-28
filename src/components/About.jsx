@@ -60,13 +60,13 @@ const About = () => {
             About Us
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6">
-            Who{" "}
+            About{" "}
             <span className="bg-gradient-to-r from-[#d946ef] to-[#06b6d4] bg-clip-text text-transparent">
-              We Are
+              Apex Technify
             </span>
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mx-auto px-4">
-            Transforming ideas into powerful digital experiences with innovation and creativity
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
+            Your imagination. Our know-how. One tremendous digital force.
           </p>
         </div>
 
@@ -93,15 +93,13 @@ const About = () => {
                   </span>
                 </h3>
                 <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-5">
-                  At Apex Technify, we are passionate about transforming ideas into
-                  powerful digital experiences. Our team of creative minds and tech
-                  experts work together to deliver innovative solutions that drive
-                  results.
+                  Apex Technify is an all-inclusive digital firm that helps the business world to be successful online. We are super good at making websites that are custom-built, doing all types of WordPress stuff, making online stores, and creating performance web apps that can be easily increased in size.
+                </p>
+                <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-5">
+                  A group of experts composed of graphic designers, computer programmers, and digital marketing strategists takes care of the above mentioned services including search engine optimization (SEO), local SEO optimization, content marketing, social media marketing, online reputation management, and branding. They are all working together to increase visibility, attract more users, and finally increase sales and profits.
                 </p>
                 <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed">
-                  From stunning websites to comprehensive digital marketing strategies,
-                  we help businesses stand out in the digital landscape and achieve
-                  their goals with cutting-edge technology and creative excellence.
+                  Being a reliable SEO firm and a digital marketing agency, we join forces with startups and expanding enterprises to craft a digital experience that is both effective and memorable in terms of online presence.
                 </p>
               </div>
 

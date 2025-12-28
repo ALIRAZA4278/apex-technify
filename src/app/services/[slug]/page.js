@@ -10,24 +10,24 @@ import ContactModal from "@/components/ContactModal";
 // Service-specific packages data
 const packages = {
   "Web Development": [
-    { tier: "Basic", price: "499", description: "Perfect for small businesses", features: ["5 Pages", "Responsive Design", "Contact Form", "Basic SEO", "1 Month Support"] },
-    { tier: "Standard", price: "999", popular: true, description: "Ideal for growing businesses", features: ["10 Pages", "Custom Animations", "CMS Integration", "Advanced SEO", "3 Months Support"] },
-    { tier: "Premium", price: "1999", description: "Enterprise solutions", features: ["Unlimited Pages", "E-commerce", "Custom Features", "Priority Support", "12 Months Support"] },
+    { tier: "Basic", price: "499", description: "Excellent for small companies", features: ["5 Pages", "Mobile-friendly", "Contact Form", "Basic SEO", "1 Month Support"] },
+    { tier: "Standard", price: "999", popular: true, description: "Open for business expansion", features: ["10 Pages", "Custom Animations", "CMS Integration", "Advanced SEO", "3 Months Support"] },
+    { tier: "Premium", price: "1999", description: "Corporate packages", features: ["No Limit on Pages", "E-commerce", "Custom Features", "Priority Support", "12 Months Support"] },
   ],
   "Logo Design": [
-    { tier: "Basic", price: "199", description: "Simple logo design", features: ["3 Concepts", "2 Revisions", "PNG & JPG Files", "Social Media Kit"] },
-    { tier: "Standard", price: "399", popular: true, description: "Professional branding", features: ["5 Concepts", "Unlimited Revisions", "All File Formats", "Brand Guidelines", "Stationery Design"] },
-    { tier: "Premium", price: "799", description: "Complete brand identity", features: ["8 Concepts", "Unlimited Revisions", "Full Brand Book", "Marketing Materials", "Social Templates"] },
+    { tier: "Basic", price: "199", description: "Straightforward Logo Design", features: ["3 Logo Ideas", "2 Changes", "PNG & JPG Files", "Social Media Kit"] },
+    { tier: "Standard", price: "399", popular: true, description: "Professional Branding", features: ["5 Logo Ideas", "Unlimited Changes", "All Formats", "Branding Guidelines", "Letterhead Design"] },
+    { tier: "Premium", price: "799", description: "Total Brand Identity", features: ["8 Logo Ideas", "Unlimited Changes", "Complete Branding Manual", "Promotional Materials", "Social Media Designs"] },
   ],
   "UI/UX Design": [
-    { tier: "Basic", price: "599", description: "Essential design", features: ["5 Screens", "Wireframes", "Basic Prototype", "1 Revision Round"] },
-    { tier: "Standard", price: "1299", popular: true, description: "Complete design", features: ["15 Screens", "User Research", "Interactive Prototype", "Design System", "3 Revision Rounds"] },
-    { tier: "Premium", price: "2499", description: "Full UX package", features: ["Unlimited Screens", "User Testing", "Complete Design System", "Developer Handoff", "Ongoing Support"] },
+    { tier: "Basic", price: "599", description: "Fundamental UI/UX Design", features: ["5 Screens", "UX Wireframes", "Basic Prototype", "1 Revision Round"] },
+    { tier: "Standard", price: "1299", popular: true, description: "Full UI/UX Design", features: ["15 Screens", "User Research", "Interactive Prototype", "Design System", "3 Revision Rounds"] },
+    { tier: "Premium", price: "2499", description: "Total UX Package", features: ["Unlimited Screens", "User Testing", "Complete Design System", "Developer-Ready Handoff", "Ongoing Support"] },
   ],
   "Video Editing": [
-    { tier: "Basic", price: "149", description: "Simple edits", features: ["Up to 3 min", "Basic Cuts", "Music & Text", "1 Revision"] },
-    { tier: "Standard", price: "349", popular: true, description: "Professional editing", features: ["Up to 10 min", "Color Grading", "Motion Graphics", "Sound Design", "3 Revisions"] },
-    { tier: "Premium", price: "699", description: "Cinematic production", features: ["Up to 30 min", "Advanced VFX", "Custom Animation", "Full Audio Mix", "Unlimited Revisions"] },
+    { tier: "Basic", price: "149", description: "Basic Video Editing", features: ["Maximum of 3 Minutes", "Basic Cuts", "Music & Text", "1 Revision"] },
+    { tier: "Standard", price: "349", popular: true, description: "Professional Video Editing", features: ["Up to 10 Minutes", "Color Grading", "Motion Graphics", "Sound Design", "3 Revisions"] },
+    { tier: "Premium", price: "699", description: "Cinematic Video Production", features: ["Up to 30 Minutes", "Advanced VFX", "Custom Animations", "Full Audio Mix", "Unlimited Revisions"] },
   ],
   "Digital Marketing": [
     { tier: "Basic", price: "499", description: "Starter package", features: ["1 Platform", "10 Posts/Month", "Basic Analytics", "Monthly Report"] },
@@ -35,9 +35,9 @@ const packages = {
     { tier: "Premium", price: "1999", description: "Enterprise package", features: ["All Platforms", "Daily Posts", "Full Ad Management", "Real-time Dashboard", "Dedicated Manager"] },
   ],
   "SEO Optimization": [
-    { tier: "Basic", price: "399", description: "Local SEO", features: ["5 Keywords", "On-Page SEO", "Google Business", "Monthly Report"] },
-    { tier: "Standard", price: "799", popular: true, description: "National SEO", features: ["15 Keywords", "Technical SEO", "Link Building", "Content Strategy", "Bi-weekly Reports"] },
-    { tier: "Premium", price: "1499", description: "Enterprise SEO", features: ["50+ Keywords", "Full Site Audit", "Advanced Link Building", "Content Creation", "Weekly Reports"] },
+    { tier: "Basic", price: "399", description: "Local SEO", features: ["5 Target Keywords", "On-Page SEO Optimization", "Google Business Profile Optimization", "Monthly SEO Report"] },
+    { tier: "Standard", price: "799", popular: true, description: "National SEO", features: ["15 Target Keywords", "Technical SEO Optimization", "Link Building Campaigns", "SEO Content Strategy", "Bi-Monthly Reports"] },
+    { tier: "Premium", price: "1499", description: "Enterprise SEO", features: ["50+ Target Keywords", "Full Website SEO Audit", "Advanced Link Building", "SEO Content Creation", "Weekly Performance Reports"] },
   ],
   "Social Media Management": [
     { tier: "Basic", price: "399", description: "Essential management", features: ["2 Platforms", "12 Posts/Month", "Basic Graphics", "Monthly Analytics"] },
@@ -410,20 +410,20 @@ const ServicePage = () => {
                   Free Consultation
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                  Let's Bring Your <span style={{ color: service.color }}>Vision</span> to Life
+                  Comprehending with <span style={{ color: service.color }}>Your Vision</span>
                 </h2>
                 <p className="text-gray-400 mb-6">
-                  Schedule a free 30-minute strategy call with our {service.title.toLowerCase()} experts.
-                  We'll discuss your project goals and create a roadmap for success.
+                  Arranging a complimentary 30 minutes strategic session with our masters of {service.title.toLowerCase()}.
+                  Offers include custom project assessment, professional advice, and transparent pricing.
                 </p>
 
                 {/* Benefits */}
                 <div className="space-y-3 mb-6">
                   {[
-                    "Personalized project analysis",
-                    "Expert recommendations",
-                    "Clear pricing & timeline",
-                    "No obligation to proceed"
+                    "Custom project assessment",
+                    "Professional advice",
+                    "Transparent pricing & deadlines",
+                    "No commitment to continue"
                   ].map((benefit, i) => (
                     <div key={i} className="flex items-center gap-3">
                       <div
@@ -665,7 +665,7 @@ const ServicePage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            <p className="text-gray-400 mb-4">Need something custom?</p>
+            <p className="text-gray-400 mb-4">In case you are requiring something not standard, just get in contact and we will do a Custom Package together!</p>
             <motion.button
               onClick={() => {
                 setSelectedPackage({
@@ -696,7 +696,7 @@ const ServicePage = () => {
             viewport={{ once: true }}
           >
             <span className="text-xs tracking-[0.2em] uppercase font-medium" style={{ color: service.color }}>
-              Questions
+              Common Inquiries
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">
               Frequently <span style={{ color: service.color }}>Asked</span>
@@ -730,7 +730,7 @@ const ServicePage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            Ready to Get Started?
+            Ready to Start?
           </motion.h2>
           <motion.p
             className="text-gray-400 max-w-xl mx-auto mb-8"
@@ -738,7 +738,7 @@ const ServicePage = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            Let's create something amazing together. Contact us today and take the first step towards your digital transformation.
+            Let us create a site that will be not only aesthetically attractive but also efficient in converting. Contact us today and take your first step towards professional web development services and a strong online presence.
           </motion.p>
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center"
