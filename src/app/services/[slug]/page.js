@@ -7,6 +7,38 @@ import Lenis from "lenis";
 import { getServiceBySlug, getServicePackages } from "@/data/services";
 import ContactModal from "@/components/ContactModal";
 
+// Service-specific portfolio data
+const portfolioData = {
+  "Web Development": [
+    { id: 1, title: "Health Mate", image: "/website/healthmate.png", tags: ["Next.js", "AI Integration"] },
+    { id: 2, title: "GracePoint Medical", image: "/website/gracepoint.png", tags: ["Next.js", "Healthcare"] },
+    { id: 3, title: "NDIS Beauty Collective", image: "/website/ndis.png", tags: ["React", "Booking System"] },
+    { id: 4, title: "Quality Care Senior Living", image: "/website/QualityCare.png", tags: ["Next.js", "Healthcare"] },
+    { id: 5, title: "Workoura", image: "/website/workoura.png", tags: ["Next.js", "Job Portal"] },
+  ],
+  "Logo Design": [
+    { id: 1, title: "Luxury Brand Logo", image: "/logo/logo-1.jpg", tags: ["Branding", "Luxury"] },
+    { id: 2, title: "Modern Tech Logo", image: "/logo/logo-2.jpg", tags: ["Tech", "Minimalist"] },
+    { id: 3, title: "Creative Agency Logo", image: "/logo/logo-4.jpg", tags: ["Creative", "Agency"] },
+    { id: 4, title: "Corporate Brand Logo", image: "/logo/logo-5.jpg", tags: ["Corporate", "Professional"] },
+    { id: 5, title: "Startup Logo Design", image: "/logo/logo-6.jpg", tags: ["Startup", "Innovation"] },
+    { id: 6, title: "Premium Brand Identity", image: "/logo/logo-9.jpg", tags: ["Brand Identity", "Premium"] },
+  ],
+  "Graphics Design": [
+    { id: 1, title: "Social Media Banner", image: "/design/design-1.jpg", tags: ["Social Media", "Banner"] },
+    { id: 2, title: "Marketing Flyer", image: "/design/design-2.jpg", tags: ["Marketing", "Print"] },
+    { id: 3, title: "Brand Poster", image: "/design/design-3.jpg", tags: ["Poster", "Creative"] },
+    { id: 4, title: "Digital Advertisement", image: "/design/design-4.jpg", tags: ["Digital Ads", "Marketing"] },
+    { id: 5, title: "Business Brochure", image: "/design/design-5.jpg", tags: ["Brochure", "Corporate"] },
+    { id: 6, title: "Event Banner", image: "/design/design-6.jpg", tags: ["Event", "Banner"] },
+  ],
+  "E-Commerce": [
+    { id: 1, title: "Halwaiii", image: "/website/halwaiii.png", tags: ["E-Commerce", "Payment Integration"] },
+    { id: 2, title: "Mohit Computers", image: "/website/mohitcomputers.png", tags: ["E-Commerce", "Full-Stack"] },
+    { id: 3, title: "Furniro", image: "/website/furniture.png", tags: ["E-Commerce", "Furniture"] },
+  ],
+};
+
 // Service-specific packages data
 const packages = {
   "Web Development": [
@@ -69,6 +101,7 @@ const ServicePage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const serviceData = getServiceBySlug(params.slug);
@@ -191,6 +224,7 @@ const ServicePage = () => {
   }
 
   const servicePackages = packages[service.title] || [];
+  const servicePortfolio = portfolioData[service.title] || [];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -337,6 +371,135 @@ const ServicePage = () => {
           </div>
         </div>
       </section>
+
+      {/* Portfolio Section - Only show if portfolio exists */}
+      {servicePortfolio.length > 0 && (
+        <section className="py-16 sm:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-16">
+            <motion.div
+              className="text-center mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-xs tracking-[0.2em] uppercase font-medium" style={{ color: service.color }}>
+                Our Work
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">
+                Recent <span style={{ color: service.color }}>Projects</span>
+              </h2>
+              <p className="text-gray-400 mt-3 max-w-lg mx-auto">
+                Check out some of our recent {service.title.toLowerCase()} projects
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {servicePortfolio.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  className="group relative overflow-hidden rounded-2xl cursor-pointer h-[280px]"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => setSelectedImage(project)}
+                >
+                  {/* Background Image */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  />
+
+                  {/* Dark Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 transition-all duration-300" />
+
+                  {/* Border */}
+                  <div
+                    className="absolute inset-0 rounded-2xl border transition-all duration-300"
+                    style={{ borderColor: `rgba(255,255,255,0.1)` }}
+                  />
+
+                  {/* Content */}
+                  <div className="absolute inset-0 p-5 flex flex-col justify-end">
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {project.title}<span style={{ color: service.color }}>.</span>
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 text-xs rounded-md bg-white/10 text-gray-300"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Hover Effect */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-[3px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+                    style={{ background: `linear-gradient(90deg, ${service.color}, transparent)` }}
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* View All Button */}
+            <motion.div
+              className="text-center mt-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <Link href="/#portfolio">
+                <motion.button
+                  className="px-6 py-3 rounded-full font-medium border"
+                  style={{ borderColor: `${service.color}50`, color: service.color }}
+                  whileHover={{ scale: 1.05, background: `${service.color}10` }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View All Projects
+                </motion.button>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          <div
+            className="relative max-w-4xl max-h-[85vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.image}
+              alt={selectedImage.title}
+              className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+            />
+            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg">
+              <h3 className="text-xl font-bold text-white text-center">
+                {selectedImage.title}
+                <span style={{ color: service.color }}>.</span>
+              </h3>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Process Section */}
       <section className="py-16 sm:py-24 bg-white/[0.02]">

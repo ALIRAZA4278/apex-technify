@@ -50,7 +50,7 @@ export const servicesData = {
     ],
     technologies: ["React", "Next.js", "Node.js", "TypeScript", "Tailwind CSS", "MongoDB", "PostgreSQL", "AWS"],
     faqs: [
-      { question: "What is the duration of a website design process?", answer: "Most websites require 4-8 weeks to get built. Super simple sites will take 2-3 weeks. Complex applications will take 3-6 months." },
+      { question: "What is the duration of a website design process?", answer: "Most websites require 2-3 weeks to get built. Super simple sites will take 1-2 weeks. Complex applications will take 3-6 months." },
       { question: "Do you rent server space?", answer: "Yes indeed! Our managed hosting solutions come with 99.9% uptime, little extra security in the form of SSL certificates, and regular backups." },
       { question: "Would you be able to refresh my current website?", answer: "Yes for sure! Our custom website design services along with our WordPress website design services will not only improve the UX and performance but will also increase conversions." }
     ]
@@ -72,7 +72,7 @@ export const servicesData = {
       },
       {
         title: "Innovative Logo Ideas",
-        description: "Numerous different logo ideas created by seasoned branding professionals — zero templates, and no taking shortcuts.",
+        description: "Numerous different logo ideas created by seasoned branding professionals zero templates, and no taking shortcuts.",
         icon: "creative"
       },
       {
@@ -111,60 +111,60 @@ export const servicesData = {
       { question: "Do I own the logo rights?", answer: "Yes, upon full payment, you receive complete ownership, copyright, and trademark-ready files of your logo." }
     ]
   },
-  "ui-ux-design": {
+  "graphics-design": {
     id: 3,
-    slug: "ui-ux-design",
-    title: "UI/UX Design",
-    tagline: "UI/UX Design with Happy Customers",
-    description: "The digital experiences we create are user's friendly, attractive, and focused on conversion. The UI/UX design services we provide are rich in user research and then supplemented with beautiful visuals. Being a UI/UX design agency, we apply a human-centered practice to ensure that your product standing easier to operate, attractive, and fulfilling the actual needs of the users which in turn will lead to increased engagement, retention, and conversions.",
-    heroImage: "/services/ui-ux.jpg",
+    slug: "graphics-design",
+    title: "Graphics Design",
+    tagline: "Creative Visual Designs That Make Your Brand Stand Out",
+    description: "Professional graphics design services that bring your brand vision to life. From stunning social media graphics to eye-catching marketing materials, we create visual content that captures attention and communicates your message effectively. Our creative team delivers high-quality designs for banners, brochures, flyers, posters, and all your marketing needs.",
+    heroImage: "/services/graphics-design.jpg",
     icon: "design",
     color: "#a855f7",
     features: [
       {
-        title: "User Experience (UX) Research",
-        description: "Comprehensive user research services involving behavior analysis, interviews, and usability insights for the purpose of revealing actual user's needs and pain points.",
-        icon: "research"
+        title: "Social Media Graphics",
+        description: "Eye-catching graphics for Instagram, Facebook, LinkedIn, and other social platforms that boost engagement and brand visibility.",
+        icon: "social"
       },
       {
-        title: "Wireframing & User Flows",
-        description: "Skillful UX wireframing services for checking the structure, navigation, and interaction before starting the visual design.",
-        icon: "wireframe"
+        title: "Marketing Materials",
+        description: "Professional brochures, flyers, posters, and banners that effectively communicate your brand message and drive results.",
+        icon: "marketing"
       },
       {
-        title: "Interactive Prototyping",
-        description: "Prototypes of high quality in terms of UI/UX that are interactable and enable testing and collecting feedback from real users prior to development.",
-        icon: "prototype"
+        title: "Brand Collateral",
+        description: "Business cards, letterheads, envelopes, and complete brand stationery that maintains consistency across all touchpoints.",
+        icon: "brand"
       },
       {
-        title: "UI Visual Design",
-        description: "Services for modern, clean, and visually striking user interface design which are custom to your brand identity.",
-        icon: "visual"
+        title: "Digital Advertisements",
+        description: "High-converting banner ads, display ads, and promotional graphics optimized for various digital platforms.",
+        icon: "ads"
       },
       {
-        title: "Design Systems & UI Kits",
-        description: "Development of flexible design systems and component libraries that assure uniformity over various platforms and products.",
-        icon: "system"
+        title: "Infographics",
+        description: "Visually compelling infographics that transform complex data into easy-to-understand and shareable content.",
+        icon: "info"
       },
       {
-        title: "Usability Testing & UX Optimization",
-        description: "User experience improvement and performance upgrade with the help of data-based usability testing.",
-        icon: "testing"
+        title: "Packaging Design",
+        description: "Creative product packaging and label designs that stand out on shelves and create memorable unboxing experiences.",
+        icon: "package"
       }
     ],
     process: [
-      { step: 1, title: "Research", description: "This is user interviews, surveys, competitor analysis, and a UX audit." },
-      { step: 2, title: "Information Architecture", description: "Modeling content, navigation, and user journeys for coherence." },
-      { step: 3, title: "Wireframes", description: "Production of low-fidelity layouts and enhanced user flows." },
-      { step: 4, title: "Visual Design", description: "Branding, typography, and UI elements applied." },
-      { step: 5, title: "Prototyping", description: "Creation of interactive prototypes that allow for testing and validation." },
-      { step: 6, title: "Developer Handoff", description: "Design specs, assets, and documentation prepared for development." }
+      { step: 1, title: "Brief & Discovery", description: "Understanding your brand, target audience, and design requirements." },
+      { step: 2, title: "Concept Development", description: "Creating initial design concepts and mood boards for your approval." },
+      { step: 3, title: "Design Creation", description: "Developing polished designs based on approved concepts." },
+      { step: 4, title: "Revisions", description: "Refining designs based on your feedback until perfect." },
+      { step: 5, title: "Finalization", description: "Final touches and quality checks on all designs." },
+      { step: 6, title: "Delivery", description: "Providing all files in required formats ready for use." }
     ],
-    technologies: ["Figma", "Adobe XD", "Sketch", "InVision", "Principle", "Framer"],
+    technologies: ["Adobe Photoshop", "Adobe Illustrator", "Canva", "Figma", "CorelDRAW"],
     faqs: [
-      { question: "What's the difference between UI and UX?", answer: "UX design concentrates chiefly upon the user's requirements and desires regarding usability, functionality, and even enjoyment, whereas UI design deals with the aesthetic and interface parts." },
-      { question: "Will you provide files that are ready for developers?", answer: "Definitely. We hand over the UI/UX files, design systems, and specifications that are ready for the developer." },
-      { question: "Which existing product can be improved?", answer: "Definitely. The UX audits, redesigning services, and optimization for the existing web and mobile products are all offered by us." }
+      { question: "What file formats do you deliver?", answer: "We deliver designs in all required formats including PNG, JPG, PDF, AI, PSD, and SVG based on your needs." },
+      { question: "How many revisions are included?", answer: "Our packages include multiple revision rounds to ensure you get exactly what you need. We work until you're satisfied." },
+      { question: "Can you match my existing brand style?", answer: "Absolutely! We carefully follow your brand guidelines to ensure all designs maintain consistency with your existing brand identity." }
     ]
   },
   "video-editing": {
@@ -199,7 +199,7 @@ export const servicesData = {
       },
       {
         title: "Video Editing for Social Media",
-        description: "Fine-tuned modifications for YouTube, Instagram, TikTok, Facebook, advertisements, and reels — prepared for all platforms.",
+        description: "Fine-tuned modifications for YouTube, Instagram, TikTok, Facebook, advertisements, and reels prepared for all platforms.",
         icon: "social"
       },
       {
@@ -457,9 +457,9 @@ export const getServicePackages = (serviceName) => {
   // Map service names to package filter names
   const serviceToPackageMap = {
     "Web Development": "Web Development",
-    "Logo Design": "Brand Identity",
-    "UI/UX Design": "UI/UX Design",
-    "Video Editing": "Content Strategy",
+    "Logo Design": "Logo Design",
+    "Graphics Design": "Graphics Design",
+    "Video Editing": "Video Editing",
     "Digital Marketing": "Digital Marketing",
     "SEO Optimization": "SEO Optimization",
     "Social Media": "Social Media",

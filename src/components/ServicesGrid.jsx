@@ -33,14 +33,15 @@ const services = [
   },
   {
     id: 3,
-    title: "UI/UX Design",
-    slug: "ui-ux-design",
-    description: "User-friendly, attractive digital experiences focused on conversion through research-driven design and beautiful visuals.",
+    title: "Graphics Design",
+    slug: "graphics-design",
+    description: "Eye-catching visual designs including banners, social media graphics, brochures, and marketing materials that make your brand stand out.",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-        <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/>
-        <path d="M12 2V4M12 20V22M2 12H4M20 12H22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M4.93 4.93L6.34 6.34M17.66 17.66L19.07 19.07M4.93 19.07L6.34 17.66M17.66 6.34L19.07 4.93" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+        <circle cx="8.5" cy="8.5" r="2" stroke="currentColor" strokeWidth="1.5"/>
+        <path d="M21 15L16 10L5 21" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M14 21L19 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       </svg>
     ),
   },
