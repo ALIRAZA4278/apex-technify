@@ -139,14 +139,6 @@ const projects = [
     tags: ["Graphics Design", "Poster", "Creative"],
   },
   {
-    id: 18,
-    title: "Digital Advertisement",
-    category: "Graphics Design",
-    description: "High-converting digital ad design optimized for various online platforms",
-    image: "/design/design-4.jpg",
-    tags: ["Graphics Design", "Digital Ads", "Marketing"],
-  },
-  {
     id: 19,
     title: "Business Brochure",
     category: "Graphics Design",
@@ -172,11 +164,11 @@ const projects = [
   },
   {
     id: 22,
-    title: "Instagram Post Design",
+    title: "Instagram Banner",
     category: "Graphics Design",
-    description: "Engaging Instagram post design that increases social media reach",
+    description: "Eye-catching Instagram banner design that increases social media reach",
     image: "/design/design-8.jpg",
-    tags: ["Graphics Design", "Instagram", "Social Media"],
+    tags: ["Graphics Design", "Banner", "Social Media"],
   },
   {
     id: 23,
@@ -282,10 +274,25 @@ const PortfolioCard = ({ project, onClick }) => {
 const Portfolio = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const filteredProjects = activeCategory === "All"
     ? projects
     : projects.filter((p) => p.category === activeCategory);
+
+  // Show only visibleCount projects
+  const visibleProjects = filteredProjects.slice(0, visibleCount);
+  const hasMoreProjects = filteredProjects.length > visibleCount;
+
+  // Reset visible count when category changes
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    setVisibleCount(6);
+  };
+
+  const handleViewMore = () => {
+    setVisibleCount(prev => prev + 6);
+  };
 
   return (
     <section id="portfolio" className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden">
@@ -318,7 +325,7 @@ const Portfolio = () => {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => handleCategoryChange(category)}
               className={`px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:scale-105 active:scale-95 ${
                 activeCategory === category
                   ? "text-white"
@@ -340,7 +347,7 @@ const Portfolio = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-          {filteredProjects.map((project) => (
+          {visibleProjects.map((project) => (
             <PortfolioCard
               key={project.id}
               project={project}
@@ -348,6 +355,22 @@ const Portfolio = () => {
             />
           ))}
         </div>
+
+        {/* View More Button - Only show if there are more projects */}
+        {hasMoreProjects && (
+          <div className="text-center mt-10 sm:mt-12 md:mt-16">
+            <button
+              onClick={handleViewMore}
+              className="px-8 py-4 rounded-full font-medium text-white relative overflow-hidden group hover:scale-105 active:scale-95 transition-transform duration-200"
+              style={{
+                background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #06b6d4 100%)",
+              }}
+            >
+              <span className="relative z-10">View More Projects</span>
+              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox Modal */}
@@ -390,9 +413,9 @@ const Portfolio = () => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              const currentIndex = filteredProjects.findIndex(p => p.id === selectedImage.id);
-              const prevIndex = currentIndex === 0 ? filteredProjects.length - 1 : currentIndex - 1;
-              setSelectedImage(filteredProjects[prevIndex]);
+              const currentIndex = visibleProjects.findIndex(p => p.id === selectedImage.id);
+              const prevIndex = currentIndex === 0 ? visibleProjects.length - 1 : currentIndex - 1;
+              setSelectedImage(visibleProjects[prevIndex]);
             }}
             className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#d946ef]/80 flex items-center justify-center transition-colors"
           >
@@ -404,9 +427,9 @@ const Portfolio = () => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              const currentIndex = filteredProjects.findIndex(p => p.id === selectedImage.id);
-              const nextIndex = currentIndex === filteredProjects.length - 1 ? 0 : currentIndex + 1;
-              setSelectedImage(filteredProjects[nextIndex]);
+              const currentIndex = visibleProjects.findIndex(p => p.id === selectedImage.id);
+              const nextIndex = currentIndex === visibleProjects.length - 1 ? 0 : currentIndex + 1;
+              setSelectedImage(visibleProjects[nextIndex]);
             }}
             className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-[#d946ef]/80 flex items-center justify-center transition-colors"
           >

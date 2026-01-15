@@ -28,9 +28,9 @@ const portfolioData = {
     { id: 1, title: "Social Media Banner", image: "/design/design-1.jpg", tags: ["Social Media", "Banner"] },
     { id: 2, title: "Marketing Flyer", image: "/design/design-2.jpg", tags: ["Marketing", "Print"] },
     { id: 3, title: "Brand Poster", image: "/design/design-3.jpg", tags: ["Poster", "Creative"] },
-    { id: 4, title: "Digital Advertisement", image: "/design/design-4.jpg", tags: ["Digital Ads", "Marketing"] },
-    { id: 5, title: "Business Brochure", image: "/design/design-5.jpg", tags: ["Brochure", "Corporate"] },
-    { id: 6, title: "Event Banner", image: "/design/design-6.jpg", tags: ["Event", "Banner"] },
+    { id: 4, title: "Business Brochure", image: "/design/design-5.jpg", tags: ["Brochure", "Corporate"] },
+    { id: 5, title: "Event Banner", image: "/design/design-6.jpg", tags: ["Event", "Banner"] },
+    { id: 6, title: "Product Packaging", image: "/design/design-7.jpg", tags: ["Packaging", "Product"] },
   ],
   "E-Commerce": [
     { id: 1, title: "Halwaiii", image: "/website/halwaiii.png", tags: ["E-Commerce", "Payment Integration"] },
