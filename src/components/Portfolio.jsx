@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 const projects = [
   {
@@ -204,11 +205,17 @@ const PortfolioCard = ({ project, onClick }) => {
       onClick={onClick}
       className="group relative overflow-hidden rounded-2xl cursor-pointer h-[320px] md:h-[380px]"
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-        style={{ backgroundImage: `url(${project.image})` }}
-      />
+      {/* Background Image - Optimized with Next.js Image */}
+      <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-110">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+          loading="lazy"
+        />
+      </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20 transition-all duration-300" />
@@ -391,13 +398,16 @@ const Portfolio = () => {
 
           {/* Image Container */}
           <div
-            className="relative max-w-5xl max-h-[90vh] w-full"
+            className="relative max-w-5xl max-h-[90vh] w-full h-[80vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
+            <Image
               src={selectedImage.image}
               alt={selectedImage.title}
-              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+              fill
+              className="object-contain rounded-lg"
+              sizes="100vw"
+              priority
             />
 
             {/* Title */}

@@ -203,24 +203,6 @@ const ServicesGrid = () => {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <button
-            onClick={() => {
-              const packagesSection = document.getElementById('packages');
-              if (packagesSection) {
-                packagesSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="px-8 py-4 rounded-full font-medium text-white relative overflow-hidden group hover:scale-105 active:scale-95 transition-transform duration-200"
-            style={{
-              background: "linear-gradient(135deg, #d946ef 0%, #a855f7 50%, #06b6d4 100%)",
-            }}
-          >
-            <span className="relative z-10">Explore All Services</span>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-          </button>
-        </div>
       </div>
     </section>
   );

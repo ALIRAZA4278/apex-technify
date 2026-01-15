@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const Particles = ({
   className = "",
@@ -13,12 +13,31 @@ const Particles = ({
   const canvasRef = useRef(null);
   const particlesRef = useRef([]);
   const animationRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Handle visibility change to pause animation when tab is not visible
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsVisible(!document.hidden);
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
 
   useEffect(() => {
+    // Check for reduced motion preference
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d", { alpha: true });
+
+    // Reduce particle count on mobile
+    const isMobile = window.innerWidth < 768;
+    const actualParticleCount = isMobile ? Math.min(particleCount, 10) : particleCount;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -27,7 +46,7 @@ const Particles = ({
 
     const createParticles = () => {
       particlesRef.current = [];
-      for (let i = 0; i < particleCount; i++) {
+      for (let i = 0; i < actualParticleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -40,32 +59,49 @@ const Particles = ({
       }
     };
 
-    const drawParticles = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let lastTime = 0;
+    const fps = 30; // Limit to 30fps for better performance
+    const interval = 1000 / fps;
 
-      particlesRef.current.forEach((particle) => {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
+    const drawParticles = (currentTime) => {
+      // Skip if tab not visible
+      if (!isVisible) {
+        animationRef.current = requestAnimationFrame(drawParticles);
+        return;
+      }
 
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
+      const delta = currentTime - lastTime;
 
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = particle.color;
-        ctx.globalAlpha = particle.alpha;
-        ctx.fill();
-      });
+      if (delta >= interval) {
+        lastTime = currentTime - (delta % interval);
 
-      ctx.globalAlpha = 1;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particlesRef.current.forEach((particle) => {
+          particle.x += particle.speedX;
+          particle.y += particle.speedY;
+
+          if (particle.x < 0) particle.x = canvas.width;
+          if (particle.x > canvas.width) particle.x = 0;
+          if (particle.y < 0) particle.y = canvas.height;
+          if (particle.y > canvas.height) particle.y = 0;
+
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fillStyle = particle.color;
+          ctx.globalAlpha = particle.alpha;
+          ctx.fill();
+        });
+
+        ctx.globalAlpha = 1;
+      }
+
       animationRef.current = requestAnimationFrame(drawParticles);
     };
 
     resizeCanvas();
     createParticles();
-    drawParticles();
+    animationRef.current = requestAnimationFrame(drawParticles);
 
     const handleResize = () => {
       resizeCanvas();
@@ -80,13 +116,13 @@ const Particles = ({
       }
       window.removeEventListener("resize", handleResize);
     };
-  }, [particleCount, speed, particleColors, alphaParticles, sizeRandomness]);
+  }, [particleCount, speed, particleColors, alphaParticles, sizeRandomness, isVisible]);
 
   return (
     <canvas
       ref={canvasRef}
       className={`fixed inset-0 pointer-events-none ${className}`}
-      style={{ backgroundColor, willChange: "auto" }}
+      style={{ backgroundColor }}
     />
   );
 };
