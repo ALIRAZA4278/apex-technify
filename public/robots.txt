@@ -1,0 +1,11 @@
+# Robots.txt for apextechnify.com
+# https://www.apextechnify.com
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.apextechnify.com/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
