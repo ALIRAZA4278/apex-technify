@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Playfair_Display, Space_Grotesk, Sora, Outfit } from "next/font/google";
+import { Geist, Geist_Mono, Sora, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
@@ -12,28 +12,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
-
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["700"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -82,20 +70,11 @@ export const metadata = {
     siteName: 'Apex Technify',
     title: 'Apex Technify - Digital Agency | Web Development, Logo Design & Digital Marketing',
     description: 'Apex Technify is a leading digital agency offering web development, logo design, graphics design, video editing, digital marketing, SEO optimization, social media management, and e-commerce solutions.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Apex Technify - Digital Agency',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Apex Technify - Digital Agency | Web Development & Digital Marketing',
     description: 'Transform your business with Apex Technify. Expert web development, logo design, digital marketing, SEO, and more.',
-    images: ['/og-image.png'],
     creator: '@apextechnify',
   },
   alternates: {
@@ -190,7 +169,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${spaceGrotesk.variable} ${sora.variable} ${outfit.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

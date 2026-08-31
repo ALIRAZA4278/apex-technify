@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Simple professional email templates
 const getAdminEmailTemplate = ({ name, email, phone, service, packageInfo, message, inquiryType }) => {
@@ -234,23 +236,6 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Name, email, and message are required' }, { status: 400 });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.NM_EMAIL_USER,
-        pass: process.env.NM_EMAIL_PW,
-      },
-    });
-
-    try {
-      await transporter.verify();
-    } catch (verifyError) {
-      console.error('SMTP verification failed:', verifyError);
-      return NextResponse.json({ error: 'Email configuration error' }, { status: 500 });
-    }
-
     // Determine inquiry type
     let inquiryType = 'general';
     if (packageInfo && packageInfo.tier && packageInfo.tier !== 'Inquiry' && packageInfo.tier !== 'Meeting') {
@@ -276,20 +261,30 @@ export async function POST(request) {
       clientSubject = `Inquiry Received - ${service}`;
     }
 
-    await transporter.sendMail({
-      from: `"Apex Technify" <${process.env.NM_EMAIL_USER}>`,
+    const { error: adminError } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL,
       to: process.env.NM_EMAIL_USER,
+      replyTo: email,
       subject: adminSubject,
       html: getAdminEmailTemplate({ name, email, phone, service, packageInfo, message, inquiryType }),
     });
 
-    await transporter.sendMail({
-      from: `"Apex Technify" <${process.env.NM_EMAIL_USER}>`,
+    if (adminError) {
+      console.error('Resend admin email failed:', adminError);
+      return NextResponse.json({ error: 'Email configuration error' }, { status: 500 });
+    }
+
+    const { error: clientError } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL,
       to: email,
       replyTo: process.env.NM_EMAIL_USER,
       subject: clientSubject,
       html: getClientEmailTemplate({ name, service, packageInfo, inquiryType }),
     });
+
+    if (clientError) {
+      console.error('Resend client email failed:', clientError);
+    }
 
     return NextResponse.json({ message: 'Message sent successfully!' }, { status: 200 });
 

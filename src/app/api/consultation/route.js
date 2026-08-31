@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const getAdminEmailTemplate = ({ name, email, phone, service, preferredTime, message }) => {
   return `
@@ -229,37 +231,30 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Please fill all required fields' }, { status: 400 });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.NM_EMAIL_USER,
-        pass: process.env.NM_EMAIL_PW,
-      },
-    });
-
-    try {
-      await transporter.verify();
-    } catch (verifyError) {
-      console.error('SMTP verification failed:', verifyError);
-      return NextResponse.json({ error: 'Email configuration error' }, { status: 500 });
-    }
-
-    await transporter.sendMail({
-      from: `"Apex Technify" <${process.env.NM_EMAIL_USER}>`,
+    const { error: adminError } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL,
       to: process.env.NM_EMAIL_USER,
+      replyTo: email,
       subject: `Consultation Request - ${service}`,
       html: getAdminEmailTemplate({ name, email, phone, service, preferredTime, message }),
     });
 
-    await transporter.sendMail({
-      from: `"Apex Technify" <${process.env.NM_EMAIL_USER}>`,
+    if (adminError) {
+      console.error('Resend admin email failed:', adminError);
+      return NextResponse.json({ error: 'Email configuration error' }, { status: 500 });
+    }
+
+    const { error: clientError } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL,
       to: email,
       replyTo: process.env.NM_EMAIL_USER,
       subject: `Consultation Confirmed - ${service}`,
       html: getClientEmailTemplate({ name, service, preferredTime }),
     });
+
+    if (clientError) {
+      console.error('Resend client email failed:', clientError);
+    }
 
     return NextResponse.json({ message: 'Consultation booked successfully!' }, { status: 200 });
 

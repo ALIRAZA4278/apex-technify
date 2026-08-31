@@ -163,14 +163,14 @@ const Page = () => {
             >
               Digital Agency
             </motion.p>
-            <motion.h2
+            <motion.h1
               variants={fadeUpVariants}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-4 sm:mb-6"
             >
               Let's Build Your
               <br />
               <span className="font-semibold">Digital Legacy.</span>
-            </motion.h2>
+            </motion.h1>
             <motion.p
               variants={fadeUpVariants}
               className="text-gray-500 max-w-md text-sm sm:text-base md:text-lg"

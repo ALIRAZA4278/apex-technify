@@ -38,7 +38,7 @@ export async function generateMetadata({ params }) {
   const keywords = serviceKeywords[slug] || [];
 
   return {
-    title: `${service.title} Services - Professional ${service.title} | Apex Technify`,
+    title: `Professional ${service.title} Services`,
     description: service.description.slice(0, 160),
     keywords: ["Apex Technify", "apextechnify", service.title, ...keywords],
     openGraph: {
@@ -47,20 +47,11 @@ export async function generateMetadata({ params }) {
       url: `${baseUrl}/services/${slug}`,
       siteName: "Apex Technify",
       type: "website",
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: `${service.title} Services - Apex Technify`,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${service.title} Services | Apex Technify`,
       description: service.description.slice(0, 160),
-      images: ["/og-image.png"],
     },
     alternates: {
       canonical: `${baseUrl}/services/${slug}`,
